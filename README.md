@@ -8,3 +8,4 @@
 # Graphs (BFS, DFS, Shortest Path)
 # Dynamic Programming (DP)
 # Bit Manipulation
+# Heaps & Priority Queues
