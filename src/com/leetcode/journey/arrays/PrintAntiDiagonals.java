@@ -10,7 +10,7 @@ package com.leetcode.journey.arrays;
  *    Output : 8,3,6
  *
  */
-public class PrintAllAntiDiagonals {
+public class PrintAntiDiagonals {
     public static void main(String[] args) {
         int[][] matrix = {
                 {1,5,8},
