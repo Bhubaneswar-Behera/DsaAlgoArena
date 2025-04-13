@@ -10,6 +10,8 @@ import java.util.Arrays;
  * Output: arr = [4, 5, 1, 2, 3]
  * Explanation: The elements are rotated to the right by 2 steps.
  *
+ * https://leetcode.com/problems/rotate-array/?envType=study-plan-v2&envId=top-interview-150
+ *
  */
 public class RotateTheArray {
     public static void main(String[] args) {
