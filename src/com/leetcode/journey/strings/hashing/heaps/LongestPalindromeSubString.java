@@ -16,13 +16,13 @@ public class LongestPalindromeSubString {
             return s;
         }
         int start = 0, end = 0;
-        for (int i = 0; i < n; i++) {
-            int len1 = expandAroundCenter(s, i, i); // Odd length palindrome
-            int len2 = expandAroundCenter(s, i, i + 1); // Even length palindrome
-            int len = Math.max(len1, len2);
-            if (len > end - start) {
-                start = i - (len - 1) / 2;
-                end = i + len / 2;
+        for (int center = 0; center < n; center++) {
+            int oddLength = expandAroundCenter(s, center, center); // Odd length palindrome
+            int evenLength = expandAroundCenter(s, center, center + 1); // Even length palindrome
+            int maxLength = Math.max(oddLength, evenLength);
+            if (maxLength > end - start) {
+                start = center - (maxLength - 1) / 2;
+                end = center + maxLength / 2;
             }
         }
         return s.substring(start, end + 1);
