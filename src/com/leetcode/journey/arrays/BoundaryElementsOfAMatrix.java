@@ -29,7 +29,7 @@ public class BoundaryElementsOfAMatrix {
         }
 
         //Print (n-1) element of 1st Column --> Bottom To Top
-        for (int index = 0;index < numberOfRows - 1;index++) {
+        for (int i = 0; i < numberOfRows - 1; i++) {
             System.out.print(A[rowIndex][columnIndex]+" ");
             rowIndex--;
         }
