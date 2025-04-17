@@ -1,6 +1,8 @@
 package com.leetcode.journey.arrays;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Given an integer A, generate a square matrix filled with elements
@@ -13,6 +15,7 @@ import java.util.Arrays;
  *   {14, 23, 22, 21, 8},
  *   { 13, 12, 11, 10, 9] ]
  *
+ * https://leetcode.com/problems/spiral-matrix/?envType=study-plan-v2&envId=top-interview-150
  *
  */
 public class SpiralMatrix {
@@ -59,5 +62,46 @@ public class SpiralMatrix {
             answer[row][column] = value;
         }
         return  answer;
+    }
+    public static List<Integer> spiralOrder(int[][] matrix) {
+        List<Integer> answer = new ArrayList<>();
+        if (matrix == null || matrix.length == 0) {
+            return answer;
+        }
+
+        int top = 0, bottom = matrix.length - 1;
+        int left = 0, right = matrix[0].length - 1;
+
+        while (top <= bottom && left <= right) {
+            // Traverse from left to right along the top boundary
+            for (int i = left; i <= right; i++) {
+                answer.add(matrix[top][i]);
+            }
+            top++; // Move the top boundary down
+
+            // Traverse from top to bottom along the right boundary
+            for (int i = top; i <= bottom; i++) {
+                answer.add(matrix[i][right]);
+            }
+            right--; // Move the right boundary left
+
+            // Traverse from right to left along the bottom boundary (if still within bounds)
+            if (top <= bottom) {
+                for (int i = right; i >= left; i--) {
+                    answer.add(matrix[bottom][i]);
+                }
+                bottom--; // Move the bottom boundary up
+            }
+
+            // Traverse from bottom to top along the left boundary (if still within bounds)
+            if (left <= right) {
+                for (int i = bottom; i >= top; i--) {
+                    answer.add(matrix[i][left]);
+                }
+                left++; // Move the left boundary right
+            }
+        }
+
+        return answer;
     }
 }
