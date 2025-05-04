@@ -40,6 +40,4 @@ public class EditDistance {
         // Return the result
         return dp[m][n];
     }
-
-
 }
