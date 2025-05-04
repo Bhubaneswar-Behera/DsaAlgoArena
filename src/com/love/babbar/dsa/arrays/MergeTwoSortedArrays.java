@@ -17,8 +17,6 @@ public class MergeTwoSortedArrays {
     }
     public static void mergeArrays(int[] arr1, int[] arr2) {
         int n = arr1.length;
-        int m = arr2.length;
-
         int i = 0;
         int j = 0;
         while(i < n){
@@ -42,7 +40,6 @@ public class MergeTwoSortedArrays {
                 arr2[i] = arr2[i-1];
                 arr2[i-1] = temp;
             }
-
         }
     }
 }
