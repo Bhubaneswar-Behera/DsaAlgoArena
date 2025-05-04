@@ -49,7 +49,7 @@ public class CountInversions {
                 temp[k] = arr[j]; // Copy the element from the right subarray to the temp array
                 k++;             // Move to the next position in the temp array
                 j++;             // Move to the next position in the right subarray
-                invCount += (mid - i + 1); // Count inversions for remaining elements in the left subarray
+                invCount = invCount + (mid - i + 1); // Count inversions for remaining elements in the left subarray
             }
         }
 
