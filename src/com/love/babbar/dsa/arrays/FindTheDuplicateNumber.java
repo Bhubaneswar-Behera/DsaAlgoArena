@@ -1,7 +1,9 @@
 package com.love.babbar.dsa.arrays;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  *
@@ -11,6 +13,7 @@ public class FindTheDuplicateNumber {
     public static void main(String[] args) {
         int[] arr = {1, 3, 4, 2, 2};
         System.out.println("Duplicate number is: " + findDuplicate(arr));
+        System.out.println("Duplicate number is: " + findDuplicate1(arr));
     }
     public static int findDuplicate(int[] nums) {
         int n = nums.length;
@@ -30,5 +33,18 @@ public class FindTheDuplicateNumber {
 
         return answer ;
 
+    }
+
+    public static int findDuplicate1(int[] nums) {
+        int n = nums.length;
+        int answer  = 0;
+        Set<Integer> hashSet = new HashSet<>();
+        for (int i = 0; i < n ; i++) {
+            if(!hashSet.add(i)){
+                answer = nums[i];
+            }
+            hashSet.add(nums[i]);
+        }
+        return answer;
     }
 }
