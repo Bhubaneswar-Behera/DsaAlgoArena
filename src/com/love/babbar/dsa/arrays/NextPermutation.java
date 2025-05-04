@@ -9,7 +9,7 @@ import java.util.Arrays;
  */
 public class NextPermutation {
     public static void main(String[] args) {
-        int[] nums = {3,2,1};
+        int[] nums = {1,2,3};
         nextPermutation(nums);
         System.out.println("Next Permutation: "+ Arrays.toString(nums));
     }
@@ -23,7 +23,7 @@ public class NextPermutation {
 
         //find the first decreasing element
         for (int i = n - 1; i > 0 ; i--) {
-            if(nums[i - 1] >= nums[i]){ //equal to as arrays can have duplicate
+            if(nums[i] <= nums[i-1]){ //equal to as arrays can have duplicate
                 k = k - 1;
             } else {
                 break;
