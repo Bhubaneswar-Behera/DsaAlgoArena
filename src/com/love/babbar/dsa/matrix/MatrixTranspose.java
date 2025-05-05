@@ -30,7 +30,7 @@ public class MatrixTranspose {
             //System.out.println(Arrays.toString(a));
         }
 
-        //printTranspose(A);
+        printTranspose(A);
 
     }
     public static int[][] solve(int[][] A) {
