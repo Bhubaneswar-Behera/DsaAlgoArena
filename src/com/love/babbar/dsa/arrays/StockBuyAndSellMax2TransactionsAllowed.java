@@ -4,6 +4,10 @@ public class StockBuyAndSellMax2TransactionsAllowed {
     public static void main(String[] args) {
         int[] prices = {3, 2, 6, 5, 0, 3};
         System.out.println(maxProfit(prices)); // Output: 7
+        //Explanation :
+        //Buy on day 2 (price = 2) and sell on day 3 (price = 6), profit = 6-2 = 4.
+        //Then buy on day 5 (price = 0) and sell on day 6 (price = 3), profit = 3-0 = 3.
+        //Total profit is 4 + 3 = 7.
     }
     public static int maxProfit(int[] prices) {
         int n = prices.length;
