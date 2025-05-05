@@ -6,7 +6,7 @@ import java.util.ArrayList;
  *
  *https://www.geeksforgeeks.org/problems/spirally-traversing-a-matrix-1587115621/1
  */
-public class SpirallyMatrix {
+public class SpirallMatrix {
     public static void main(String[] args) {
         int[][] mat = {
                           {1, 2, 3, 4},
