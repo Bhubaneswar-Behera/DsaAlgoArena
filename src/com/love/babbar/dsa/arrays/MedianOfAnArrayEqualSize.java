@@ -6,7 +6,7 @@ import java.util.Arrays;
  *
  * https://www.geeksforgeeks.org/problems/find-the-median0527/1
  */
-public class MedianOfAnArray {
+public class MedianOfAnArrayEqualSize {
 
     public static void main(String[] args) {
         int[] arr = {90, 100, 78, 89, 67};
