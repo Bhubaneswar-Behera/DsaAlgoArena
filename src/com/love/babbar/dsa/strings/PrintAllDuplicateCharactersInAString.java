@@ -3,6 +3,12 @@ package com.love.babbar.dsa.strings;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ *
+ *
+ * https://www.geeksforgeeks.org/print-all-the-duplicates-in-the-input-string/
+ */
+
 public class PrintAllDuplicateCharactersInAString {
     public static void main(String[] args) {
         String str = "geeksforgeeks";
