@@ -45,6 +45,9 @@ public class AllPathsFromSourceToTarget {
         graph[6].add(new  Edge(6,5));
     }
 
+    /**
+     * Time Complexity: O(V^V)
+     */
     public static void printAllPaths(ArrayList<Edge> graph[],boolean[] visited, int current,String path ,int target) {
       if (current == target) {
           System.out.println(path);
