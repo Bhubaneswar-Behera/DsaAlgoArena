@@ -59,4 +59,20 @@ public class BFS {
         }
     }
 
+    public static void main(String[] args) {
+        int V = 7; // Number of vertices
+
+
+       /*
+        1 -- 3
+       /     |  \
+      0      |   5 -- 6
+       \     |  /
+        2 -- 4
+        */
+
+        ArrayList<Edge> graph[] = new ArrayList[V];
+        createGraph(graph);
+        bfs(graph, V);
+    }
 }
