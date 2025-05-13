@@ -1,8 +1,8 @@
-package com.graph.learning;
+package com.graph.learning.part1;
 
 import java.util.ArrayList;
 
-public class DFS {
+public class DFSForDisConnectedComponents {
 
     static class Edge {
         int src;
@@ -57,18 +57,15 @@ public class DFS {
     public static void main(String[] args) {
         int V = 7; // Number of vertices
 
-        /*
-        1 -- 3
-       /     |  \
-      0      |   5 -- 6
-       \     |  /
-        2 -- 4
-        */
-
         ArrayList<Edge> graph[] = new ArrayList[V];
         createGraph(graph);
 
         boolean[] visited = new boolean[V];
-        dfs(graph, 0, visited);
+        for (int i = 0; i < V; i++) {
+            if (visited[i] == false) {
+                dfs(graph, i, visited);
+                System.out.println();
+            }
+        }
     }
 }
