@@ -1,7 +1,5 @@
 package com.graph.learning.part2;
 
-import com.graph.learning.part1.DirectedCycleDetection;
-
 import java.util.ArrayList;
 
 public class UnDirectedCycleDetection {

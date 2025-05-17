@@ -1,4 +1,4 @@
-package com.graph.learning.part1;
+package com.graph.learning.part2;
 
 import java.util.ArrayList;
 
