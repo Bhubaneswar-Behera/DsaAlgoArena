@@ -2,7 +2,7 @@ package com.graph.learning.part1;
 
 import java.util.ArrayList;
 
-public class CycleDetection {
+public class DirectedCycleDetection {
 
     static class Edge {
         int src, dest;
