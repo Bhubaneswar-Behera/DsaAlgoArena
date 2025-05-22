@@ -24,8 +24,11 @@ public class GroupAnagrams {
             Arrays.sort(chars);
             String key = new String(chars);
 
+            // Check if the key exists, if not, initialize a new list
+            if (!map.containsKey(key)) {
+                map.put(key, new ArrayList<String>());
+            }
             // Add the string to the corresponding group
-            map.putIfAbsent(key, new ArrayList<>());
             map.get(key).add(str);
         }
 
