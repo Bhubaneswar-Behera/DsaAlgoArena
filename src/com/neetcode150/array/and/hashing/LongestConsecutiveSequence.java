@@ -7,6 +7,11 @@ import java.util.Map;
 /**
  *
  * https://neetcode.io/problems/longest-consecutive-sequence
+ * Example 1:
+ * Input: nums = [100,4,200,1,3,2]
+ * Output: 4
+ * Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.
+ *
  * Reference : https://www.youtube.com/watch?v=LvbtUMdcgbw&t=391s
  */
 public class LongestConsecutiveSequence {
