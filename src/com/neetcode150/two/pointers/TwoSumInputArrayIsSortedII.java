@@ -5,8 +5,10 @@ import java.util.Arrays;
 /**
  *
  * https://neetcode.io/problems/two-integer-sum-ii
+ *
+ * Two Sum II - Input Array Is Sorted
  */
-public class TwoIntegerSumII {
+public class TwoSumInputArrayIsSortedII {
 
     public static void main(String[] args) {
         int[] numbers = {1,2,3,4};
