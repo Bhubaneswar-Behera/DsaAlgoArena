@@ -6,6 +6,7 @@ import java.util.Map;
 /**
  *
  * https://neetcode.io/problems/longest-repeating-substring-with-replacement
+ * Reference : https://www.youtube.com/watch?v=ExY8svHF_Eo
  */
 public class LongestRepeatingCharacterReplacement {
 
@@ -19,24 +20,54 @@ public class LongestRepeatingCharacterReplacement {
 
     public static int characterReplacement(String s, int k) {
         Map<Character, Integer> freqMap = new HashMap<>();
-        int maxCount = 0, left = 0, maxLength = 0;
+        int maxFreq = 0, left = 0, maxWindow = 0;
 
         for (int right = 0; right < s.length(); right++) {
-            char c = s.charAt(right);
-            freqMap.put(c, freqMap.getOrDefault(c, 0) + 1);
+            char currentChar = s.charAt(right);
+            freqMap.put(currentChar, freqMap.getOrDefault(currentChar, 0) + 1);
 
-            maxCount = Math.max(maxCount, freqMap.get(c));
+            maxFreq = Math.max(maxFreq, freqMap.get(currentChar));
+            int windowLength = right - left + 1;
 
-            // If more than k characters need to be replaced
-            if ((right - left + 1) - maxCount > k) {
+            if (windowLength - maxFreq > k) {
                 char leftChar = s.charAt(left);
                 freqMap.put(leftChar, freqMap.get(leftChar) - 1);
                 left++;
             }
 
-            maxLength = Math.max(maxLength, right - left + 1);
-
+            maxWindow = Math.max(maxWindow, windowLength);
         }
-        return maxLength;
+        return maxWindow;
+    }
+
+    public static int characterReplacement1(String s, int k) {
+        int[] freq = new int[26];
+        int left = 0;
+        int maxFreq = 0;
+        int maxWindow = 0;
+
+        for (int right = 0; right < s.length(); right++) {
+
+            // Update the frequency of the current character
+            char currentChar = s.charAt(right);
+            freq[currentChar - 'A']++;
+
+            // Update the max frequency
+            maxFreq = Math.max(maxFreq, freq[currentChar - 'A']);
+
+            int windowLength = right - left + 1;
+
+            // If the windowLength - max frequency > k,
+            // then we need to shrink the window
+            if (windowLength - maxFreq > k) {
+                freq[s.charAt(left) - 'A']--;
+                left++;
+            }
+
+            windowLength = right - left + 1;
+            maxWindow = Math.max(maxWindow, windowLength);
+        }
+
+        return maxWindow;
     }
 }
