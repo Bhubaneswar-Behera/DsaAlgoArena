@@ -31,15 +31,15 @@ public class SlidingWindowMaximum {
         Deque<Integer> deque = new LinkedList<>();
 
         for (int i = 0; i < n; i++) {
-            // Remove indices that are out of the current window
+            // Remove the front element if it is out of the current window
             if (!deque.isEmpty() && deque.peekFirst() < i - k + 1) {
-                deque.poll();
+                deque.removeFirst();
             }
 
             // Remove elements from the back of deque if they are smaller than nums[i].
             // as Smaller numbers can’t be the max if there's a bigger number after them.
             while (!deque.isEmpty() && nums[deque.peekLast()] < nums[i]) {
-                deque.pollLast();
+                deque.removeLast();
             }
 
             // Add the current index
