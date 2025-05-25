@@ -3,6 +3,7 @@ package com.neetcode150.binary.search;
 /**
  *
  * https://leetcode.com/problems/search-in-rotated-sorted-array/description/
+ * Reference : https://www.youtube.com/watch?v=6WNZQBHWQJs
  */
 public class SearchInRotatedSortedArray {
 
@@ -23,22 +24,21 @@ public class SearchInRotatedSortedArray {
                 return mid;
             }
 
-
-            if (nums[left] <= nums[mid]) {
+            //either left to mid is sorted or mid to right is sorted
+            if (nums[left] <= nums[mid]) { // left to mid is sorted
                 if (nums[left] <= target && target < nums[mid]) {
-                    right = mid - 1;
+                    right = mid - 1; // target is in the left sorted part
                 } else {
-                    left = mid + 1;
+                    left = mid + 1; // target is in the right part
                 }
-            } else {
+            } else { // mid to right is sorted
                 if (nums[mid] < target && target <= nums[right]) {
-                    left = mid + 1;
+                    left = mid + 1; // target is in the right sorted part
                 } else {
-                    right = mid - 1;
+                    right = mid - 1; // target is in the left part
                 }
             }
         }
-
         return -1;
     }
 }
