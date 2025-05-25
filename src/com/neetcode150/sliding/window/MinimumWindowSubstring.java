@@ -32,8 +32,9 @@ public class MinimumWindowSubstring {
 
        int required = mapT.size();
        int left = 0;
-       int right =0;
+       int right = 0;
        int create = 0;
+         // This will store the length of the minimum window substring
        int [] ans = {-1, 0, 0};
        Map<Character, Integer> subStringMap = new HashMap<>();
 
@@ -45,6 +46,7 @@ public class MinimumWindowSubstring {
            if(mapT.containsKey(currentChar) && subStringMap.get(currentChar).intValue() == mapT.get(currentChar).intValue()){
                create++;
            }
+              // If we have a valid window (all characters in t are present in the substring)
            while(left <= right && required == create){
                currentChar = s.charAt(left);
                if(ans[0] == -1 || ans[0] >= right - left + 1){
@@ -53,7 +55,9 @@ public class MinimumWindowSubstring {
                    ans[2] = right;
                }
 
+                // Remove the leftmost character from the substring map
                subStringMap.put(currentChar,subStringMap.get(currentChar) - 1);
+                // If the frequency of the leftmost character is less than the frequency in t, decrement create
                if(mapT.containsKey(currentChar) && subStringMap.get(currentChar).intValue() < mapT.get(currentChar).intValue()){
                    create--;
                }
