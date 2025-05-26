@@ -19,13 +19,19 @@ public class ValidParentheses {
             if (c == '(' || c == '{' || c == '[') {
                 characterStack.push(c);
             } else {
+                // If the stack is empty or the top of the stack does not match the current character, return false
                 if (characterStack.isEmpty()) {
                     return false;
                 }
-                char top = characterStack.pop();
-                if ((c == ')' && top != '(') ||
-                        (c == '}' && top != '{') ||
-                        (c == ']' && top != '[')) {
+                char top = characterStack.peek();
+                if(c == ')' && top == '(') {
+                   characterStack.pop();
+                } else if ( c == '}' && top == '{') {
+                    characterStack.pop();
+                } else if (c == ']' && top == '[') {
+                    characterStack.pop();
+                } else {
+                    // If the current character does not match the top of the stack, return false
                     return false;
                 }
             }
