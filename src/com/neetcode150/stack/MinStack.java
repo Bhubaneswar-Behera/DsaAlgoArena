@@ -19,14 +19,11 @@ public class MinStack {
         System.out.println(minStack.getMin()); // Output: -2
     }
 
-    private Stack<Integer> stack;
-    private Stack<Integer> minStack;
+    // A stack that supports push, pop, top, and retrieving the minimum element in constant time.
+    private Stack<Integer> stack = new Stack<>();
 
-
-    public MinStack() {
-        stack = new Stack<>();
-        minStack = new Stack<>();
-    }
+    // A secondary stack to keep track of the minimum elements.
+    private Stack<Integer> minStack = new Stack<>();
 
     public void push(int val) {
         stack.push(val);
