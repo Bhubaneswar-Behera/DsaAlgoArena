@@ -5,59 +5,42 @@ import java.util.*;
 /**
  *
  * https://neetcode.io/problems/generate-parentheses
+ * Reference :
  */
 public class GenerateParentheses {
-
-    static class Node {
-        String current;
-        int open;
-        int close;
-
-        Node(String current, int open, int close) {
-            this.current = current;
-            this.open = open;
-            this.close = close;
-        }
-    }
-
     public static void main(String[] args) {
-        int n = 1;
+        int n = 2;
         System.out.println(generateParenthesis(n));
     }
     public static List<String> generateParenthesis(int n) {
         List<String> result = new ArrayList<>();
-        Stack<String> stack = new Stack<>();
-        Stack<Integer> openStack = new Stack<>();
-        Stack<Integer> closeStack = new Stack<>();
-
-        stack.push("");
-        openStack.push(0);
-        closeStack.push(0);
-
-        while (!stack.isEmpty()) {
-            String current = stack.pop();
-            int open = openStack.pop();
-            int close = closeStack.pop();
-
-            if (open == n && close == n) {
-                result.add(current);
-                continue;
-            }
-
-            if (open < n) {
-                stack.push(current + "(");
-                openStack.push(open + 1);
-                closeStack.push(close);
-            }
-
-            if (close < open) {
-                stack.push(current + ")");
-                openStack.push(open);
-                closeStack.push(close + 1);
-            }
+        // Helper function to generate parentheses
+        generateParenthesis(n, 0,0,result,"");
+        return result;
+    }
+    private static void generateParenthesis(int n, int openingBracket, int closingBracket, List<String> result, String current) {
+        // If the current string has reached the maximum length
+        /*if (current.length() == 2 * n) {
+            result.add(current);
+            return;
+        }*/
+        // If we have used all opening and closing brackets
+        if(n == openingBracket && n == closingBracket) {
+            result.add(current);
+            return;
+        }
+        // If we have more opening/closing brackets than allowed then we return
+        if (n < openingBracket || n < closingBracket) {
+            return; // Invalid state
         }
 
-        return result;
-
+        // If we can add an opening parenthesis
+        if (openingBracket < n) {
+            generateParenthesis(n, openingBracket + 1, closingBracket, result, current + "(");
+        }
+        // If we can add a closing parenthesis
+        if (closingBracket < openingBracket) {
+            generateParenthesis(n, openingBracket, closingBracket + 1, result, current + ")");
+        }
     }
 }
