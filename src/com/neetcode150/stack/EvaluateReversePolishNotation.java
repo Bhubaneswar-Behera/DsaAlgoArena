@@ -25,9 +25,9 @@ public class EvaluateReversePolishNotation {
                 int result = 0;
 
                 switch (token) {
-                    case "+": result = a + b; break;
-                    case "-": result = a - b; break;
-                    case "*": result = a * b; break;
+                    case "+": result = a + b; break; // Integer Addition
+                    case "-": result = a - b; break; // Integer Subtraction
+                    case "*": result = a * b; break; // Integer Multiplication
                     case "/": result = a / b; break; // Integer division
                 }
 
