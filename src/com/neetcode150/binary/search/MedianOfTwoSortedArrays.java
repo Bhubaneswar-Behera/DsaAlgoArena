@@ -41,8 +41,14 @@ public class MedianOfTwoSortedArrays {
         int high = arr1.length;
 
         while (low <= high ){
+            // partition index in the first array (arr1)
             int mid1 = low + (high - low) / 2;
+
+            // partition index in the second array (arr2)
+            //The goal is to divide the combined arrays into two halves
+            // such that all elements in the left half are less than or equal to all elements in the right half.
             int mid2 = (arr1.length + arr2.length + 1) / 2 - mid1;//+1 as it works for odd and even
+
             // if mid1 is 0, it means there are no elements on the left side of arr1
             int left1 = (mid1 == 0) ? Integer.MIN_VALUE : arr1[mid1 - 1];
 
