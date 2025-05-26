@@ -6,6 +6,7 @@ import java.util.Stack;
 /**
  *
  * https://neetcode.io/problems/car-fleet
+ * Reference: https://www.youtube.com/watch?v=TPSiTAFhszA
  */
 public class CarFleet {
 
@@ -31,7 +32,7 @@ public class CarFleet {
 
         Stack<Double> stack = new Stack<>();
 
-        // Step 3: Iterate through each car
+        // Step 3: Iterate through each car position
         for (int i = 0; i < n; i++) {
             double currentTime = cars[i][1];
             // If stack is empty or current car takes longer (new fleet)
