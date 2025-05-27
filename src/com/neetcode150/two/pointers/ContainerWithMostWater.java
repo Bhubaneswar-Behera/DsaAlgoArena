@@ -21,10 +21,13 @@ public class ContainerWithMostWater {
             int height = Math.min(heights[left], heights[right]);
             maxArea = Math.max(maxArea, width * height);
 
-            // Move the pointer pointing to the shorter line
+            // Move the pointer pointing to the taller line that could increase the area.
             if (heights[left] < heights[right]) {
                 left++;
-            } else {
+            }
+            //Otherwise, the right pointer is
+            // decremented (right--) to potentially find a taller line on the right side.
+            else {
                 right--;
             }
         }
