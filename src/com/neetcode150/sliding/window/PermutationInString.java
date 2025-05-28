@@ -17,8 +17,11 @@ public class PermutationInString {
         // Explanation: The substring "cba" is a permutation of "abc".
     }
     public static boolean checkInclusion(String s1, String s2) {
-        int len1 = s1.length(), len2 = s2.length();
-        if (len1 > len2) return false;
+        int len1 = s1.length();
+        int len2 = s2.length();
+        if (len1 > len2) {
+            return false;
+        }
 
         // Sort s1
         char[] s1Chars = s1.toCharArray();
