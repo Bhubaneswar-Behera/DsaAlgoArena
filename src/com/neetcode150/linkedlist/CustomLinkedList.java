@@ -24,7 +24,7 @@ public class CustomLinkedList {
         }
     }
 
-    //Add a new node at the end of the linked list
+    //Add a new node at the begining of the linked list
     public  void addFirst(String data){
         Node newNode = new Node(data);
         if (head == null) {
@@ -77,6 +77,16 @@ public class CustomLinkedList {
         secondLastNode.next = null;
     }
 
+    public Node search(String data) {
+        Node current = head;
+        while (current != null) {
+            if (current.data.equals(data)) {
+                return current;
+            }
+            current = current.next;
+        }
+        return null; // Not found
+    }
     public void printList() {
         if(head == null) {
             System.out.println("List is empty");
