@@ -17,6 +17,37 @@ public class DailyTemperatures {
     }
 
     public static int[] dailyTemperatures(int[] temperatures) {
+        Stack<Integer> stack = new Stack<>();
+
+        int n = temperatures.length;
+        int[] answer = new int[n];
+
+        for(int i = n - 1; i >= 0; i--) {
+
+            // Popping all indices with a lower or equal
+            // temperature than the current index
+            while(!stack.isEmpty()
+                    && temperatures[i] >= temperatures[stack.peek()]) {
+                stack.pop();
+            }
+
+            // If the stack still has elements,
+            // then the next warmer temperature exists!
+            if(!stack.isEmpty()) {
+                //Subtracting the current index i from the index of the next warmer day (stack.peek())
+                // gives the difference in days between the two indices,
+                // which represents how many days you need to wait for a warmer temperature.
+                answer[i] = stack.peek() - i;
+            }
+
+            // Inserting current index in the stack
+            stack.push(i);
+        }
+
+        return answer;
+    }
+
+    public static int[] dailyTemperatures1(int[] temperatures) {
         int n = temperatures.length;
         int[] result = new int[n];
         Stack<Integer> stack = new Stack<>(); // Stack to store indices
@@ -34,31 +65,5 @@ public class DailyTemperatures {
         return result;
     }
 
-    public static int[] dailyTemperatures1(int[] temperatures) {
-        Stack<Integer> helperStack = new Stack<>();
 
-        int totalDays = temperatures.length;
-        int[] daysToWait = new int[totalDays];
-
-        for(int currentDay = totalDays - 1; currentDay >= 0; currentDay--) {
-
-            // Popping all indices with a lower or equal
-            // temperature than the current index
-            while(!helperStack.isEmpty()
-                    && temperatures[currentDay] >= temperatures[helperStack.peek()]) {
-                helperStack.pop();
-            }
-
-            // If the stack still has elements,
-            // then the next warmer temperature exists!
-            if(!helperStack.isEmpty()) {
-                daysToWait[currentDay] = helperStack.peek() - currentDay;
-            }
-
-            // Inserting current index in the stack
-            helperStack.push(currentDay);
-        }
-
-        return daysToWait;
-    }
 }
