@@ -22,11 +22,12 @@ public class LongestSubstringWithoutRepeatingCharacters {
         int maxLength = 0;
 
         for (int right = 0; right < s.length(); right++) {
-            while (hashSet.contains(s.charAt(right))) {
+            char currentChar = s.charAt(right);
+            while (hashSet.contains(currentChar)) {
                 hashSet.remove(s.charAt(left));
                 left++; // shrink window from left
             }
-            hashSet.add(s.charAt(right));
+            hashSet.add(currentChar);
             maxLength = Math.max(maxLength, right - left + 1);
         }
 
