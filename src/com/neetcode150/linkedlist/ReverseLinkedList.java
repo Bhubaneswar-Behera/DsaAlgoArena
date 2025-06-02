@@ -87,8 +87,4 @@ public class ReverseLinkedList {
 
 
     }
-    public static ListNode reverseList(ListNode head) {
-
-        return null;
-    }
 }
