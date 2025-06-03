@@ -3,6 +3,7 @@ package com.neetcode150.linkedlist;
 /**
  *
  * https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/
+ * Reference : https://www.youtube.com/watch?v=6gI8OMoac4Q
  */
 public class RemoveNthNodeFromEndOfList {
     public class ListNode {
