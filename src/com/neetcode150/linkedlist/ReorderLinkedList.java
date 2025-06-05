@@ -23,10 +23,18 @@ public class ReorderLinkedList {
         head.next.next.next = reorderLinkedList.new ListNode(4);
         head.next.next.next.next = reorderLinkedList.new ListNode(5);
 
+        //Print the original list
+        System.out.println("Original List:");
+        ListNode current = head;
+        while (current != null) {
+            System.out.print(current.val + " ");
+            current = current.next;
+        }
         reorderLinkedList.reorderList(head);
 
         // Print the reordered list
-        ListNode current = head;
+        System.out.println("\nReordered List:");
+        current = head;
         while (current != null) {
             System.out.print(current.val + " ");
             current = current.next;
