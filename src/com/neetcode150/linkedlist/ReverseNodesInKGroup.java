@@ -32,8 +32,9 @@ public class ReverseNodesInKGroup {
         ListNode previousNode = reverseKGroup(currentNode, k);
         currentNode = head;
         count = 0;
+        ListNode nextNode = null;
         while (count < k) {
-            ListNode nextNode = currentNode.next;
+            nextNode = currentNode.next;
             currentNode.next = previousNode;
             previousNode = currentNode;
             currentNode = nextNode;
