@@ -11,11 +11,10 @@ import java.util.Map;
 public class LongestRepeatingCharacterReplacement {
 
     public static void main(String[] args) {
-        String s = "XYYX";
-        int k = 2;
-        System.out.println(characterReplacement(s, k)); // Output: 4
-        //Explanation: Replace the first 'X' with 'Y' and the second 'X' with 'Y' to get "YYYY".
-        // The length of the longest substring is 4.
+        String s = "AABABBA";
+        int k = 1;
+        System.out.println(characterReplacement(s, k)); // Output: 5
+        //Explanation: The substring "AABAB" can be replaced with "AAAAA" by replacing one 'B' with 'A', resulting in a length of 5.
     }
 
     public static int characterReplacement(String s, int k) {
