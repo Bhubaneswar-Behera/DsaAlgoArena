@@ -24,7 +24,7 @@ public class CarFleet {
 
         for (int i = 0; i < n; i++) {
             cars[i][0] = position[i];
-            cars[i][1] = (double)(target - position[i]) / speed[i];
+            cars[i][1] = (double)(target - position[i]) / speed[i];// time to reach the target
         }
 
         // Step 2: Sort cars by position DESCENDING (farthest from destination first)
