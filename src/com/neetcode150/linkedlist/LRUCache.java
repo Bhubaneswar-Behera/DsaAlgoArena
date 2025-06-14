@@ -43,38 +43,40 @@ public class LRUCache {
             return -1;
         }
         Node node = map.get(key);
-        remove(node);
-        insertAtHead(node);
+        remove(node);// Remove the node from its current position
+        insertAtHead(node);// Insert it at the head (most recently used)
         return node.value;
     }
 
     public void put(int key, int value) {
         if (map.containsKey(key)) {
-            Node node = map.get(key);
-            node.value = value;
-            remove(node);
-            insertAtHead(node);
+            Node node = map.get(key);// Get the existing node
+            node.value = value;// Update its value
+            remove(node);// Remove the node from its current position
+            insertAtHead(node);// Insert it at the head (most recently used)
         } else {
-            if (map.size() == capacity) {
-                map.remove(tail.prev.key);
-                remove(tail.prev);
+            if (map.size() == capacity) {// If the cache is full
+                map.remove(tail.prev.key);// Remove the least recently used node
+                remove(tail.prev);// Remove it from the linked list
             }
-            Node newNode = new Node(key, value);
-            map.put(key, newNode);
-            insertAtHead(newNode);
+            Node newNode = new Node(key, value);// Create a new node
+            map.put(key, newNode);// Add it to the map
+            insertAtHead(newNode);// Insert it at the head (most recently used)
         }
     }
 
+    // Removes the node from the linked list
     private void remove(Node node) {
-        node.prev.next = node.next;
-        node.next.prev = node.prev;
+        node.prev.next = node.next;// Connect the previous node to the next node
+        node.next.prev = node.prev;// Connect the next node to the previous node
     }
 
+    // Inserts the node right after the head
     private void insertAtHead(Node node) {
-        node.next = head.next;
-        node.next.prev = node;
-        head.next = node;
-        node.prev = head;
+        node.next = head.next;// Connect the new node to the next node
+        node.next.prev = node;// Connect the next node's previous to the new node
+        head.next = node;// Connect the head to the new node
+        node.prev = head;// Connect the new node's previous to the head
     }
 
     public static void main(String[] args) {
