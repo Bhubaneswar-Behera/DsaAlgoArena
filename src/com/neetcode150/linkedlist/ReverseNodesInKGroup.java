@@ -14,6 +14,17 @@ public class ReverseNodesInKGroup {
       ListNode(int val, ListNode next) { this.val = val; this.next = next; }
   }
     public static void main(String[] args) {
+        // Example usage
+        ReverseNodesInKGroup solution = new ReverseNodesInKGroup();
+        ListNode head = solution.new ListNode(1, solution.new ListNode(2, solution.new ListNode(3, solution.new ListNode(4, solution.new ListNode(5)))));
+        int k = 2;
+        ListNode reversedList = solution.reverseKGroup(head, k);
+
+        // Print the reversed list
+        while (reversedList != null) {
+            System.out.print(reversedList.val + " ");
+            reversedList = reversedList.next;
+        }
 
     }
     public ListNode reverseKGroup(ListNode head, int k) {
