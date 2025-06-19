@@ -8,17 +8,6 @@ import java.util.Queue;
  * Reference : https://www.youtube.com/watch?v=-DzowlcaUmE&t=13s
  */
 public class BinaryTrees {
-    static class Node {
-        int data;
-        Node left;
-        Node right;
-
-        Node(int data) {
-            this.data = data;
-            this.left = null;
-            this.right = null;
-        }
-    }
     // This class builds a binary tree from an array representation
     static class BinaryTree{
         static int index = -1;
