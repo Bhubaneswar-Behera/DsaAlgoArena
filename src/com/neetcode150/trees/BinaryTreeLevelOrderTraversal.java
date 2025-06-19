@@ -33,11 +33,12 @@ public class BinaryTreeLevelOrderTraversal {
         queue.add(root);
 
         while (!queue.isEmpty()) {
-           int levelSize = queue.size();
-           List<Integer> currentLevel = new ArrayList<>();
+           int levelSize = queue.size();// Get the number of nodes at the current level
+           List<Integer> currentLevel = new ArrayList<>();// Create a list to store the values of nodes at the current level
 
+            // Iterate through all nodes at the current level
            for (int i = 0; i < levelSize; i++) {
-               TreeNode currentNode = queue.poll();
+               TreeNode currentNode = queue.poll();// Remove the front node from the queue
                currentLevel.add(currentNode.val);
 
                if (currentNode.left != null) {
