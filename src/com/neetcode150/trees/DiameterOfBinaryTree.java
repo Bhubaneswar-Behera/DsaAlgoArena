@@ -6,37 +6,57 @@ package com.neetcode150.trees;
  */
 public class DiameterOfBinaryTree {
 
-    public class TreeNode {
-      int val;
-      TreeNode left;
-      TreeNode right;
-      TreeNode() {}
-      TreeNode(int val) { this.val = val; }
-      TreeNode(int val, TreeNode left, TreeNode right) {
-          this.val = val;
-          this.left = left;
-          this.right = right;
-      }
-  }
-    private int maxDiameter = 0;
-
-    public int diameterOfBinaryTree(TreeNode root) {
-        depth(root);
-        return maxDiameter;
-    }
-
-    private int depth(TreeNode node) {
-        if (node == null) {
+    public static int heightOfTree(TreeNode root) {
+        if (root == null) {
             return 0;
         }
+        int leftHeight = heightOfTree(root.left);
+        int rightHeight = heightOfTree(root.right);
+        // Return the height of the binary tree
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
 
-        int leftDepth = depth(node.left);
-        int rightDepth = depth(node.right);
+    //Time Complexity: O(n2)
+    public static int diameterOfTree(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int leftHeight = heightOfTree(root.left);
+        int rightHeight = heightOfTree(root.right);
+        int currentDiameter = leftHeight + rightHeight + 1;
+        int leftDiameter = diameterOfTree(root.left);
+        int rightDiameter = diameterOfTree(root.right);
+        // Return the maximum diameter found in the binary tree
+        return Math.max(currentDiameter, Math.max(leftDiameter, rightDiameter));
+    }
 
-        // Update the diameter at this node
-        maxDiameter = Math.max(maxDiameter, leftDepth + rightDepth);
+    //Time Complexity: O(n)
+    public static class TreeInfo {
+        int height;
+        int diameter;
 
-        // Return the height of this node
-        return Math.max(leftDepth, rightDepth) + 1;
+        TreeInfo(int height, int diameter) {
+            this.height = height;
+            this.diameter = diameter;
+        }
+    }
+
+    public static TreeInfo diameterOptimized(Node root) {
+        if (root == null) {
+            return new TreeInfo(0, 0);
+        }
+
+        TreeInfo leftInfo = diameterOptimized(root.left);
+        TreeInfo rightInfo = diameterOptimized(root.right);
+
+        int height = Math.max(leftInfo.height, rightInfo.height) + 1;
+
+        int leftDiameter = leftInfo.diameter;
+        int rightDiameter = rightInfo.diameter;
+        int currentDiameter = leftDiameter + rightDiameter + 1;
+
+        int diameter = Math.max(currentDiameter, Math.max(leftInfo.diameter, rightInfo.diameter));
+
+        return new TreeInfo(height, diameter);
     }
 }
