@@ -7,16 +7,7 @@ import java.util.ArrayList;
  * Reference : https://www.youtube.com/watch?v=qAeitQWjNNg&t=3127s
  */
 public class BST {
-  static class Node{
-      int data;
-        Node left;
-        Node right;
-        Node(int data) {
-            this.data = data;
-            this.left = null;
-            this.right = null;
-        }
-  }
+
   public static Node insert(Node root, int value) {
       if (root == null) {
           Node newNode = new Node(value);
