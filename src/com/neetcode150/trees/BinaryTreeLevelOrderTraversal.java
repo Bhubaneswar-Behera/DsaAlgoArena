@@ -11,27 +11,14 @@ import java.util.Queue;
  */
 public class BinaryTreeLevelOrderTraversal {
 
-    public class TreeNode {
-     int val;
-      TreeNode left;
-      TreeNode right;
-      TreeNode() {}
-      TreeNode(int val) { this.val = val; }
-      TreeNode(int val, TreeNode left, TreeNode right) {
-          this.val = val;
-          this.left = left;
-          this.right = right;
-      }
-  }
-
     public static void main(String[] args) {
         BinaryTreeLevelOrderTraversal tree = new BinaryTreeLevelOrderTraversal();
-        TreeNode root = tree.new TreeNode(1);
-        root.left = tree.new TreeNode(2);
-        root.right = tree.new TreeNode(3);
-        root.left.left = tree.new TreeNode(4);
-        root.left.right = tree.new TreeNode(5);
-        root.right.right = tree.new TreeNode(6);
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.left.left = new TreeNode(4);
+        root.left.right = new TreeNode(5);
+        root.right.right = new TreeNode(6);
 
         List<List<Integer>> result = tree.levelOrder(root);
         System.out.println(result); // [[1], [2, 3], [4, 5, 6]]
