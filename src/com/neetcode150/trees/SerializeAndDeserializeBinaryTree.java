@@ -22,6 +22,8 @@ public class SerializeAndDeserializeBinaryTree {
 
     }
     // Encodes a tree to a single string.
+    //Time Complexity: O(n)
+    //Space Complexity: O(n)
     public String serialize(TreeNode root) {
         return recursiveSerialize(root, "");
     }
@@ -29,17 +31,19 @@ public class SerializeAndDeserializeBinaryTree {
 
         if(root == null){
             str = str +  "null,";
+            return str;
         }
-        else{
-            str = str + str.valueOf(root.val) +",";
-            str = recursiveSerialize(root.left, str);
-            str = recursiveSerialize(root.right, str);
-        }
+
+        str = str + root.val +",";
+        str = recursiveSerialize(root.left, str);
+        str = recursiveSerialize(root.right, str);
 
         return str;
     }
 
     // Decodes your encoded data to tree.
+    //Time Complexity: O(n)
+    //Space Complexity: O(n)
     public TreeNode deserialize(String data) {
         String[] strArray = data.split(",");
         List<String> strList = new LinkedList<String>(Arrays.asList(strArray));
