@@ -58,7 +58,7 @@ public class BinaryTrees {
         queue.add(root);
         queue.add(null); // Use null as a marker for the end of the current level
         while (!queue.isEmpty()) {
-            Node currentNode = queue.remove();
+            Node currentNode = queue.remove();// Get the front node from the queue
             if (currentNode == null) {
                 System.out.println();
                 if (queue.isEmpty()) {
