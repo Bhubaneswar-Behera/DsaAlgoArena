@@ -8,19 +8,6 @@ package com.neetcode150.trees;
  *    | height(left subtree) - height(right subtree) | ≤ 1
  */
 public class BalancedBinaryTree {
-
-    public class TreeNode {
-      int val;
-      TreeNode left;
-      TreeNode right;
-      TreeNode() {}
-      TreeNode(int val) { this.val = val; }
-      TreeNode(int val, TreeNode left, TreeNode right) {
-          this.val = val;
-          this.left = left;
-          this.right = right;
-      }
-  }
     public boolean isBalanced(TreeNode root) {
         return height(root) != -1;
     }
@@ -43,7 +30,8 @@ public class BalancedBinaryTree {
         if (Math.abs(left - right) > 1) {
             return -1;
         }
-
+        // If the tree is balanced,
+        // return the height of the node
         return Math.max(left, right) + 1;
     }
 }
