@@ -20,93 +20,93 @@ public class BST {
       }
       return root;
   }
-  public static void inorderTraversal(Node root) {
+    public boolean search(Node root, int value) {
+        if (root == null) {
+            return false;
+        }
+        if (root.data == value) {
+            return true;
+        } else if (value < root.data) {
+            return search(root.left, value);
+        } else {
+            return search(root.right, value);
+        }
+    }
+    public Node delete(Node root, int value) {
+        if (root == null) {
+            return null;
+        }
+        if (value < root.data) {
+            root.left = delete(root.left, value);
+        } else if (value > root.data) {
+            root.right = delete(root.right, value);
+        } else {
+            // Case 1 : Node with no child
+            if (root.left == null && root.right == null) {
+                return null;
+            }
+            //Case 2 : Node with one child
+            if (root.left == null) {
+                return root.right;
+            } else if (root.right == null) {
+                return root.left;
+            }
+            // Case 3 :  Node with two children: Get the inorder successor (smallest in the right subtree)
+            Node successor = findInOrderSuccessor(root.right);
+            root.data = successor.data; // Copy the inorder successor's content to this node
+            root.right = delete(root.right, successor.data); // Delete the inorder successor
+        }
+        return root;
+    }
+    public static Node findInOrderSuccessor(Node root) {
+        while (root.left != null) {
+            root = root.left;
+        }
+        return root;
+    }
+    public static void printInRange(Node root, int low, int high) {
+        if (root == null) {
+            return;
+        }
+        if (root.data >= low && root.data <= high) {// If current node's value is in range, print it
+            printInRange(root.left, low, high);
+            System.out.print(root.data + " ");
+            printInRange(root.right, low, high);
+        } else if (root.data >= high) {// If current node's value is greater than high, go left
+            printInRange(root.left, low, high);
+        } else {// If current node's value is less than low, go right
+            printInRange(root.right, low, high);
+        }
+    }
+    public static void printRootToLeafPaths(Node root, ArrayList<Integer > path) {
+        if (root == null) {
+            return;
+        }
+        path.add(root.data);
+        if (root.left == null && root.right == null) {// If it's a leaf node, print the path
+            printPaths(path);
+        } else {
+            // If not leaf node, continue to traverse
+            printRootToLeafPaths(root.left, path);
+            printRootToLeafPaths(root.right, path);
+        }
+        // Backtrack to remove the current node from the path
+        path.remove(path.size() - 1);
+    }
+    public static void printPaths(ArrayList<Integer > path) {
+        for (int i = 0; i < path.size(); i++) {
+            System.out.print(path.get(i)+"-->");
+        }
+        System.out.println();
+    }
+
+    public static void inorderTraversal(Node root) {
       if (root == null) {
           return;
       }
       inorderTraversal(root.left);
       System.out.print(root.data + " ");
       inorderTraversal(root.right);
-  }
-  public boolean search(Node root, int value) {
-      if (root == null) {
-          return false;
-      }
-      if (root.data == value) {
-          return true;
-      } else if (value < root.data) {
-          return search(root.left, value);
-      } else {
-          return search(root.right, value);
-      }
-  }
-  public Node delete(Node root, int value) {
-      if (root == null) {
-          return null;
-      }
-      if (value < root.data) {
-          root.left = delete(root.left, value);
-      } else if (value > root.data) {
-          root.right = delete(root.right, value);
-      } else {
-          // Case 1 : Node with no child
-            if (root.left == null && root.right == null) {
-                return null;
-            }
-          //Case 2 : Node with one child
-          if (root.left == null) {
-              return root.right;
-          } else if (root.right == null) {
-              return root.left;
-          }
-          // Case 3 :  Node with two children: Get the inorder successor (smallest in the right subtree)
-          Node successor = findInOrderSuccessor(root.right);
-          root.data = successor.data; // Copy the inorder successor's content to this node
-          root.right = delete(root.right, successor.data); // Delete the inorder successor
-      }
-      return root;
-  }
-  public static Node findInOrderSuccessor(Node root) {
-      while (root.left != null) {
-          root = root.left;
-      }
-      return root;
-  }
-  public static void printInRange(Node root, int low, int high) {
-      if (root == null) {
-          return;
-      }
-      if (root.data >= low && root.data <= high) {
-          printInRange(root.left, low, high);
-          System.out.print(root.data + " ");
-          printInRange(root.right, low, high);
-      } else if (root.data >= high) {
-          printInRange(root.left, low, high);
-      } else {
-          printInRange(root.right, low, high);
-      }
-  }
-
-  public static void printRootToLeafPaths(Node root, ArrayList<Integer > path) {
-      if (root == null) {
-          return;
-      }
-      path.add(root.data);
-      if (root.left == null && root.right == null) {
-         printPaths(path);
-      } else {
-            // If not leaf node, continue to traverse
-          printRootToLeafPaths(root.left, path);
-          printRootToLeafPaths(root.right, path);
-      }
-        // Backtrack to remove the current node from the path
-        path.remove(path.size() - 1);
-  }
-  public static void printPaths(ArrayList<Integer > path) {
-      for (int i = 0; i < path.size(); i++) {
-          System.out.print(path.get(i)+"-->");
-      }
-      System.out.println();
   }
     public static void main(String[] args) {
         int[] values = {5,1,3,4,2,7};
