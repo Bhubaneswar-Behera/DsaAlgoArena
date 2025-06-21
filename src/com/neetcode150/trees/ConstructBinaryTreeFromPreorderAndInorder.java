@@ -9,20 +9,6 @@ import java.util.Map;
  * Reference : https://www.youtube.com/watch?v=PbPS460rbMo
  */
 public class ConstructBinaryTreeFromPreorderAndInorder {
-
-    public class TreeNode {
-      int val;
-      TreeNode left;
-      TreeNode right;
-      TreeNode() {}
-      TreeNode(int val) { this.val = val; }
-      TreeNode(int val, TreeNode left, TreeNode right) {
-          this.val = val;
-          this.left = left;
-          this.right = right;
-      }
-  }
-
     public static void main(String[] args) {
 
     }
@@ -40,12 +26,12 @@ public class ConstructBinaryTreeFromPreorderAndInorder {
     private TreeNode splitTree(int[] preOrder, Map<Integer, Integer> inOrderIndexMap,
                                int rootIndex, int left, int right) {
 
-        // A new TreeNode is created using the value at the current
+        // A new TreeNode is created us ing the value at the current
         // rootIndex in the preOrder array.
         TreeNode root = new TreeNode(preOrder[rootIndex]);
 
         // Create left and right subtree
-        //The index of the current root value
+        // The index of the current root value
         // in the inOrder array is retrieved from the inOrderIndexMap.
         int mid = inOrderIndexMap.get(preOrder[rootIndex]);
         // If mid is equal to left, it means there is no left subtree.
