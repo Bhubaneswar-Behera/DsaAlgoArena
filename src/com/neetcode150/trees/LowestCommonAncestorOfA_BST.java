@@ -6,14 +6,9 @@ package com.neetcode150.trees;
  * Reference : https://www.youtube.com/watch?v=oX5D0uKOMck&t=6s
  */
 public class LowestCommonAncestorOfA_BST {
+    public static void main(String[] args) {
 
-    public class TreeNode {
-      int val;
-      TreeNode left;
-      TreeNode right;
-      TreeNode(int x) { val = x; }
-  }
-
+    }
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         // If root is null, return null
         if (root == null) {

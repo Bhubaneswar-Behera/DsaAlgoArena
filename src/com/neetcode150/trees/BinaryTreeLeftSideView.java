@@ -7,17 +7,23 @@ import java.util.Queue;
 
 /**
  *
- * https://leetcode.com/problems/binary-tree-right-side-view/
- * Reference : https://www.youtube.com/watch?v=BnOjzXe6J-Y
+ *
  */
-public class BinaryTreeRightSideView {
+public class BinaryTreeLeftSideView {
 
     public static void main(String[] args) {
+        BinaryTreeLeftSideView tree = new BinaryTreeLeftSideView();
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.left.left = new TreeNode(4);
+        root.left.right = new TreeNode(5);
+        root.right.right = new TreeNode(6);
 
+        System.out.println(tree.leftSideView(root)); // [1, 2, 4]
     }
-    //Time Complexity: O(N) where N is the number of nodes in the tree.
-    //Space Complexity: O(N) for the queue used in BFS.
-    public List<Integer> rightSideView(TreeNode root) {
+
+    public List<Integer> leftSideView(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         if (root == null) {
             return result;
@@ -27,14 +33,14 @@ public class BinaryTreeRightSideView {
         queue.add(root);
 
         while (!queue.isEmpty()) {
-            int levelSize = queue.size();  // Number of nodes at the current level
-            int lastValue = 0;  // Store the last node's value of the level
-
+            int levelSize = queue.size();
             for (int i = 0; i < levelSize; i++) {
                 TreeNode node = queue.poll();
-                lastValue = node.val;  // Update lastValue with the current node
-
-                // Add child nodes to queue for next level processing
+                // Add the first node of each level to the result
+                if (i == 0) {
+                    result.add(node.val);
+                }
+                // Add child nodes to the queue
                 if (node.left != null) {
                     queue.offer(node.left);
                 }
@@ -42,8 +48,6 @@ public class BinaryTreeRightSideView {
                     queue.offer(node.right);
                 }
             }
-
-            result.add(lastValue);  // Add the last node's value of this level
         }
 
         return result;
