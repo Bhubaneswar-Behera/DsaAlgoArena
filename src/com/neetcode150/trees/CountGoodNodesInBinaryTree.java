@@ -6,20 +6,6 @@ package com.neetcode150.trees;
  * Reference : https://www.youtube.com/watch?v=XzKoa5G0WnU
  */
 public class CountGoodNodesInBinaryTree {
-
-    public class TreeNode {
-      int val;
-      TreeNode left;
-      TreeNode right;
-      TreeNode() {}
-      TreeNode(int val) { this.val = val; }
-      TreeNode(int val, TreeNode left, TreeNode right) {
-          this.val = val;
-          this.left = left;
-          this.right = right;
-      }
-  }
-
     public static void main(String[] args) {
 
     }

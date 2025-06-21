@@ -9,19 +9,6 @@ import java.util.List;
  * Reference : https://www.youtube.com/watch?v=sLoZJ2E4ZDs
  */
 public class ValidateBinarySearchTree {
-    public class TreeNode {
-      int val;
-      TreeNode left;
-      TreeNode right;
-      TreeNode() {}
-      TreeNode(int val) { this.val = val; }
-      TreeNode(int val, TreeNode left, TreeNode right) {
-          this.val = val;
-          this.left = left;
-          this.right = right;
-      }
-  }
-
     public static void main(String[] args) {
 
     }
@@ -34,7 +21,7 @@ public class ValidateBinarySearchTree {
         helper(root, inOrderList);
 
         boolean isBST = true;
-        int prev = inOrderList.get(0);
+        int prev = inOrderList.get(0);//
         for (int i = 1; i < inOrderList.size(); i++) {
 
             // Check if new element is smaller than previous element
@@ -43,7 +30,7 @@ public class ValidateBinarySearchTree {
                 isBST = false;
             }
 
-            prev = inOrderList.get(i);
+            prev = inOrderList.get(i);//keep updating the previous element
         }
 
         return isBST;
