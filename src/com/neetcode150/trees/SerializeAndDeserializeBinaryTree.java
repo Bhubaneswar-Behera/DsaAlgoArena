@@ -11,12 +11,6 @@ import java.util.List;
  */
 public class SerializeAndDeserializeBinaryTree {
 
-    public class TreeNode {
-      int val;
-      TreeNode left;
-      TreeNode right;
-      TreeNode(int x) { val = x; }
-  }
 
     public static void main(String[] args) {
 
