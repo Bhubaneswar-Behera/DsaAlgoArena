@@ -6,7 +6,7 @@ import java.util.List;
 /**
  *
  * https://leetcode.com/problems/subsets/description/
- * Reference: https://www.youtube.com/watch?v=3tpjp5h3M6Y
+ * Reference: https://www.youtube.com/watch?v=kYY9DotIKlo&t=1803s
  */
 public class Subsets {
     public static void main(String[] args) {
@@ -22,20 +22,20 @@ public class Subsets {
         backtrack(resultList, new ArrayList<>(), nums, 0);
         return resultList;
     }
-    private void backtrack(List<List<Integer>> resultSets, List<Integer> tempSet,
-                           int[] nums, int start) {
+    private void backtrack(List<List<Integer>> resultSets, List<Integer> current,
+                           int[] nums, int index) {
         // Add the set to result set
-        resultSets.add(new ArrayList<>(tempSet));
-        for (int i = start; i < nums.length; i++) {
+        resultSets.add(new ArrayList<>(current));
+        for (int i = index; i < nums.length; i++) {
 
             // Case of including the number
-            tempSet.add(nums[i]);
+            current.add(nums[i]);
 
             // Backtrack the new subset
-            backtrack(resultSets, tempSet, nums, i + 1);
+            backtrack(resultSets, current, nums, i + 1);
 
             // Case of not-including the number
-            tempSet.remove(tempSet.size() - 1);
+            current.remove(current.size() - 1);
         }
     }
 }
