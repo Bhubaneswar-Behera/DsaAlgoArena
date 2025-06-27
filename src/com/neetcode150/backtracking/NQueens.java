@@ -72,7 +72,7 @@ public class NQueens {
 
         return true;
     }
-
+    // Constructs the board from the character array to a list of strings
     private List<String> construct(char[][] board) {
         List<String> result = new ArrayList<>();
         for (int i = 0; i < board.length; i++) {
