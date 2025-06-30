@@ -18,28 +18,28 @@ public class SubsetsII {
     }
 
     public List<List<Integer>> subsetsWithDup(int[] nums) {
-        List<List<Integer>> resultList = new ArrayList<>();
+        List<List<Integer>> result = new ArrayList<>();
         Arrays.sort(nums);
 
         // Start backtracking from the beginning
-        backtrack(resultList, new ArrayList<>(), nums, 0);
-        return resultList;
+        backtrack(result, new ArrayList<>(), nums, 0);
+        return result;
     }
-    private void backtrack(List<List<Integer>> resultSets, List<Integer> current,
+    private void backtrack(List<List<Integer>> result, List<Integer> current,
                            int[] nums, int start) {
         // If the set is already present, just continue
-        if (resultSets.contains((current))){
+        if (result.contains((current))){
             return;
         }
 
-        resultSets.add(new ArrayList<>(current));
+        result.add(new ArrayList<>(current));
 
         for (int i = start; i < nums.length; i++) {
             // Case of including the number
             current.add(nums[i]);
 
             // Backtrack the new subset
-            backtrack(resultSets, current, nums, i + 1);
+            backtrack(result, current, nums, i + 1);
 
             // Case of not-including the number
             current.remove(current.size() - 1);
