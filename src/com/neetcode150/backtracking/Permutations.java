@@ -16,25 +16,29 @@ public class Permutations {
     }
 
     public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> resultList = new ArrayList<>();
+        List<List<Integer>> result = new ArrayList<>();
 
-        backtrack(resultList, new ArrayList<>(), nums);
-        return resultList;
+        backtrack(result, new ArrayList<>(), nums);
+        return result;
     }
 
     private  void backtrack(List<List<Integer>> result, List<Integer> current,int[] nums) {
-
+        // Base case: if the current permutation is of the same length as nums
         if (current.size() == nums.length) {
             result.add(new ArrayList<>(current));
             return;
         }
 
         for (int num : nums) {
+            // If the number is already in the current permutation, skip it
             if (current.contains(num)) {
                 continue;
             }
+            // Add the number to the current permutation and backtrack
             current.add(num);
+            // Recursive call to continue building the permutation
             backtrack(result, current,nums);
+            // Remove the last added number to backtrack
             current.remove(current.size() - 1);
         }
     }
