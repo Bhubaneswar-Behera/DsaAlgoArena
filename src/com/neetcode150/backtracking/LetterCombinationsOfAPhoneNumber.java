@@ -45,6 +45,8 @@ public class LetterCombinationsOfAPhoneNumber {
         String letters = map.get(digit);
 
         for (int i = 0; i < letters.length(); i++) {
+            // Append the current letter to the combination
+            // and move to the next digit
             backtrack(digits, map, index + 1, current + letters.charAt(i), result);
         }
     }
