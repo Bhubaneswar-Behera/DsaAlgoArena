@@ -11,7 +11,9 @@ import java.util.PriorityQueue;
 public class LastStoneWeight {
 
     public static void main(String[] args) {
-
+        // Example usage
+        int[] stones = {2, 7, 4, 1, 8, 1};
+        System.out.println(lastStoneWeight(stones)); // Output: 1
     }
     public static int lastStoneWeight(int[] stones) {
         // Create a priority queue
