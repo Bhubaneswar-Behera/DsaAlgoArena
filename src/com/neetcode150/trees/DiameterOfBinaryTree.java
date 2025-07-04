@@ -23,7 +23,7 @@ public class DiameterOfBinaryTree {
         }
         int leftHeight = heightOfTree(root.left);
         int rightHeight = heightOfTree(root.right);
-        int currentDiameter = leftHeight + rightHeight + 1;
+        int currentDiameter = leftHeight + rightHeight;
         int leftDiameter = diameterOfTree(root.left);
         int rightDiameter = diameterOfTree(root.right);
         // Return the maximum diameter found in the binary tree
