@@ -7,7 +7,14 @@ package com.neetcode150.trees;
  */
 public class CountGoodNodesInBinaryTree {
     public static void main(String[] args) {
-
+        // Example usage
+        TreeNode root = new TreeNode(3);
+        root.left = new TreeNode(1);
+        root.right = new TreeNode(4);
+        root.left.left = new TreeNode(3);
+        CountGoodNodesInBinaryTree solution = new CountGoodNodesInBinaryTree();
+        int result = solution.goodNodes(root);
+        System.out.println("Number of good nodes: " + result); // Output: 4
     }
     public int goodNodes(TreeNode root) {
         return countGoodNodes(root,  Integer.MIN_VALUE);

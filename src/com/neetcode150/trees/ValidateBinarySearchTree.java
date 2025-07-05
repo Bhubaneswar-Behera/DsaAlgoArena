@@ -10,7 +10,13 @@ import java.util.List;
  */
 public class ValidateBinarySearchTree {
     public static void main(String[] args) {
-
+        // Example usage
+        TreeNode root = new TreeNode(2);
+        root.left = new TreeNode(1);
+        root.right = new TreeNode(3);
+        ValidateBinarySearchTree solution = new ValidateBinarySearchTree();
+        boolean result = solution.isValidBST(root);
+        System.out.println("Is valid BST: " + result); // Output: true
     }
     //Time Complexity: O(n)
     //Space Complexity: O(n)
@@ -21,7 +27,7 @@ public class ValidateBinarySearchTree {
         helper(root, inOrderList);
 
         boolean isBST = true;
-        int prev = inOrderList.get(0);//
+        int prev = inOrderList.get(0);// Initialize previous element with the first element of inOrderList
         for (int i = 1; i < inOrderList.size(); i++) {
 
             // Check if new element is smaller than previous element
