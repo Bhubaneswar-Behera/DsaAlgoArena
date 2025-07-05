@@ -17,17 +17,17 @@ public class BalancedBinaryTree {
             return 0;
         }
 
-        int left = height(node.left);
-        if (left == -1) {
+        int left = height(node.left);// Calculate height of left subtree
+        if (left == -1) {// If left subtree is not balanced
             return -1;
         }
 
-        int right = height(node.right);
-        if (right == -1) {
+        int right = height(node.right);// Calculate height of right subtree
+        if (right == -1) {// If right subtree is not balanced
             return -1;
         }
 
-        if (Math.abs(left - right) > 1) {
+        if (Math.abs(left - right) > 1) {// Check balance condition
             return -1;
         }
         // If the tree is balanced,
