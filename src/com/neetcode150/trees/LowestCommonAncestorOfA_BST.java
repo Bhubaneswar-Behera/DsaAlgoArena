@@ -7,7 +7,22 @@ package com.neetcode150.trees;
  */
 public class LowestCommonAncestorOfA_BST {
     public static void main(String[] args) {
+        // Example usage
+        TreeNode root = new TreeNode(6);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(8);
+        root.left.left = new TreeNode(0);
+        root.left.right = new TreeNode(4);
+        root.right.left = new TreeNode(7);
+        root.right.right = new TreeNode(9);
+        root.left.right.left = new TreeNode(3);
+        root.left.right.right = new TreeNode(5);
 
+        LowestCommonAncestorOfA_BST solution = new LowestCommonAncestorOfA_BST();
+        TreeNode p = root.left; // Node with value 2
+        TreeNode q = root.left.right; // Node with value 4
+        TreeNode lca = solution.lowestCommonAncestor(root, p, q);
+        System.out.println("Lowest Common Ancestor: " + lca.val); // Should print 2
     }
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         // If root is null, return null
