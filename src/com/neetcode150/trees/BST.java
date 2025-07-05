@@ -52,9 +52,9 @@ public class BST {
                 return root.left;
             }
             // Case 3 :  Node with two children: Get the inorder successor (smallest in the right subtree)
-            Node successor = findInOrderSuccessor(root.right);
-            root.data = successor.data; // Copy the inorder successor's content to this node
-            root.right = delete(root.right, successor.data); // Delete the inorder successor
+            Node inOrderSuccessor = findInOrderSuccessor(root.right);//left most node in the right subtree
+            root.data = inOrderSuccessor.data; // Copy the inorder successor's content to this node
+            root.right = delete(root.right, inOrderSuccessor.data); // Delete the right subtree's inorder successor
         }
         return root;
     }
