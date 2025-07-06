@@ -9,7 +9,15 @@ import java.util.List;
  */
 public class KthSmallestElementInABST {
     public static void main(String[] args) {
+        // Example usage
+        TreeNode root = new TreeNode(3);
+        root.left = new TreeNode(1);
+        root.right = new TreeNode(4);
+        root.left.right = new TreeNode(2);
 
+        KthSmallestElementInABST solution = new KthSmallestElementInABST();
+        int k = 1; // Find the 1st smallest element
+        System.out.println(solution.kthSmallest(root, k)); // Output: 1
     }
     public int kthSmallest(TreeNode root, int k) {
         List<Integer> inorder = new ArrayList<>();

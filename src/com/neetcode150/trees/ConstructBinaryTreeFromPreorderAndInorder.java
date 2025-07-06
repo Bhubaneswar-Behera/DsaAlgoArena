@@ -10,6 +10,13 @@ import java.util.Map;
  */
 public class ConstructBinaryTreeFromPreorderAndInorder {
     public static void main(String[] args) {
+        // Example usage
+        int[] preOrder = {3, 9, 20, 15, 7};
+        int[] inOrder = {9, 3, 15, 20, 7};
+        ConstructBinaryTreeFromPreorderAndInorder solution = new ConstructBinaryTreeFromPreorderAndInorder();
+        TreeNode root = solution.buildTree(preOrder, inOrder);
+        //print the tree or perform other operations to verify the structure
+        System.out.println("Tree constructed successfully.");
 
     }
     public TreeNode buildTree(int[] preOrder, int[] inOrder) {
