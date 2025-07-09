@@ -40,7 +40,7 @@ public class BFS {
 
         graph[6].add(new Edge(6,5));
     }
-
+    //Time Complexity: O(V + E)
     public static void bfs(ArrayList<Edge> graph[], int V) {
         Queue<Integer> queue = new LinkedList<>();
         boolean[] visited = new boolean[V];
