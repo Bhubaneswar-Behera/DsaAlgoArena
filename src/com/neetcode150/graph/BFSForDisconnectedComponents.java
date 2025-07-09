@@ -40,7 +40,7 @@ public class BFSForDisconnectedComponents {
 
         graph[6].add(new Edge(6,5));
     }
-
+    //Time Complexity: O(V + E)
     public static void bfs(ArrayList<Edge> graph[], int V ,boolean[] visited, int start) {
         Queue<Integer> queue = new LinkedList<>();
 
