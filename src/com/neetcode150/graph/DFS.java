@@ -41,7 +41,7 @@ public class DFS {
 
         graph[6].add(new Edge(6,5));
     }
-
+    //Time Complexity: O(V + E) where V is the number of vertices and E is the number of edges.
     public static void dfs(ArrayList<Edge> graph[], int current, boolean[] visited) {
         // Print the current node
         System.out.print(current + " ");
