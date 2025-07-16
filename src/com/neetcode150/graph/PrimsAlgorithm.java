@@ -56,16 +56,25 @@ public class PrimsAlgorithm {
         int mstCost = 0;
         pq.add(new Pair(0,0));
 
+        // while the priority queue is not empty
         while (!pq.isEmpty()) {
+            //get the minimum cost edge from the priority queue
             Pair current = pq.remove();
+            //if the current node is not visited, add it to the mst set
             if (!visited[current.node]) {
+                //mark the current node as visited
                 visited[current.node] = true;
+                //add the cost of the current edge to the mst cost
                 mstCost += current.cost;
 
+                //print the current edge
                 for (int i = 0 ;  i < graph[current.node].size() ;i ++) {
+                    //get the edge from the graph
                     Edge edge = graph[current.node].get(i);
+
                     //if the edge is not in the mst set
                     if (!visited[edge.destination]) {
+                        //add the edge to the priority queue
                         pq.add(new Pair(edge.destination, edge.weight));
                     }
                 }
