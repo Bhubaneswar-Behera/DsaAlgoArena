@@ -20,9 +20,7 @@ public class MaxSubarraySumOrKadanesAlgorithm {
 
         for (int i = 0; i < n ; i++) {
             currentSum = currentSum + arr[i];
-            if (currentSum > maxSum){
-                maxSum = currentSum;
-            }
+            maxSum = Math.max(maxSum, currentSum);
             if (currentSum < 0){
                 currentSum = 0;
             }
