@@ -25,9 +25,10 @@ public class TopKFrequentElements {
         PriorityQueue<Map.Entry<Integer, Integer>> maxHeap =
                 new PriorityQueue<>((a, b) -> b.getValue() - a.getValue());
 
+        //Step 3: Add all entries to the max-heap
         maxHeap.addAll(freqMap.entrySet());
 
-        // Step 3: Extract top k elements
+        // Step 4: Extract top k elements
         int[] result = new int[k];
         for (int i = 0; i < k; i++) {
             result[i] = maxHeap.poll().getKey();
