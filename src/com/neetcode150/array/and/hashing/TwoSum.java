@@ -5,6 +5,7 @@ import java.util.*;
 /**
  *
  * https://neetcode.io/problems/two-integer-sum
+ * Return indices of two numbers such that they add up to a specific target.
  */
 public class TwoSum {
     public static void main(String[] args) {
