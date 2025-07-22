@@ -25,7 +25,7 @@ public class LongestConsecutiveSequence {
         int longestLength = 0;
         Map<Integer, Boolean> numberTravelledMap = new HashMap<>();
         for (int num : nums) {
-            numberTravelledMap.put(num, Boolean.FALSE);
+            numberTravelledMap.put(num, Boolean.FALSE);// Mark all numbers as not travelled
         }
 
         for (int num : nums) {
@@ -37,6 +37,7 @@ public class LongestConsecutiveSequence {
                     numberTravelledMap.get(nextNum) == false) {
 
                 currentLength++;
+                // Mark the number as travelled
                 numberTravelledMap.put(nextNum, Boolean.TRUE);
 
                 // Move to the next number
@@ -49,6 +50,7 @@ public class LongestConsecutiveSequence {
                     numberTravelledMap.get(prevNum) == false) {
 
                 currentLength++;
+                // Mark the number as travelled
                 numberTravelledMap.put(prevNum, Boolean.TRUE);
 
                 // Move to the previous number
