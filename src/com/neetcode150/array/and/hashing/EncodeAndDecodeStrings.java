@@ -22,6 +22,7 @@ public class EncodeAndDecodeStrings {
         for (String str : strs) {
             encoded.append(str.length()).append("#").append(str);
         }
+        //sample output: "5#hello5#world8#abc#123"
         return encoded.toString();
     }
 
