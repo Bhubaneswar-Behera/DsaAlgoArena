@@ -13,10 +13,11 @@ import java.util.Set;
 public class ContainsDuplicate {
     public static void main(String[] args) {
         int[]  nums = {1, 2, 3, 3};
-        System.out.println(hasDuplicate(nums));
+        System.out.println(hasDuplicateUsingHashSet(nums));
         System.out.println(hasDuplicate1(nums));
+        System.out.println(hasDuplicateUsingBitManipulation(nums));
     }
-    public static boolean hasDuplicate(int[] nums) {
+    public static boolean hasDuplicateUsingHashSet(int[] nums) {
         int n = nums.length;
         Set<Integer> hashSet = new HashSet<>();
 
@@ -28,6 +29,21 @@ public class ContainsDuplicate {
         }
 
         return false;
+    }
+
+    public static boolean hasDuplicateUsingBitManipulation(int[] nums) {
+        int bitSet = 0; // Initialize bitSet to track seen numbers
+
+        for (int num : nums) {
+            // Check if the bit corresponding to `num` is already set
+            if ((bitSet & (1 << num)) != 0) {
+                return true; // Duplicate found
+            }
+            // Set the bit corresponding to `num`
+            bitSet |= (1 << num);
+        }
+
+        return false; // No duplicates found
     }
 
     //using HashMap
