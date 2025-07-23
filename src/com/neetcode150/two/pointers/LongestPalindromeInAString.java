@@ -22,9 +22,7 @@ public class LongestPalindromeInAString {
             String evenPalindrome = oddEven(s, i, i + 1);
             String max = oddPalindrome.length() > evenPalindrome.length() ? oddPalindrome : evenPalindrome;
 
-            if ( max.length() > answer.length()) {
-                answer = max;
-            }
+            answer = max.length() > answer.length() ? max : answer;
         }
         return answer;
     }
