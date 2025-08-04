@@ -22,6 +22,7 @@ public class ThreeSumInteger {
         List<List<Integer>> result = new ArrayList<>();
         Arrays.sort(nums); // Step 1: Sort the array
 
+        //To form a valid triplet, there must be at least two numbers after nums[i] in the array.
         for (int i = 0; i < nums.length - 2; i++) {
             // Skip duplicate values for i
             if (i > 0 && nums[i] == nums[i - 1]) {
