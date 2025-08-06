@@ -13,7 +13,7 @@ public class LongestRepeatingCharacterReplacement {
     public static void main(String[] args) {
         String s = "AABABBA";
         int k = 1;
-        System.out.println(characterReplacement(s, k)); // Output: 5
+        System.out.println(characterReplacement(s, k)); // Output: 4
         //Explanation: The substring "AABAB" can be replaced with "AAAAA" by replacing one 'B' with 'A', resulting in a length of 5.
     }
 
