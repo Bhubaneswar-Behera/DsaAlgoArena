@@ -37,7 +37,7 @@ public class WordBreak {
         for (int i = 1; i <= n; i++)
 
             // Check prefixes of length up to maxLen
-            for (int j = i - 1; j >= Math.max(0, i - maxLen); j--) {
+            for (int j = 0; j < i; j++) {
                 if (dp[j] && wordSet.contains(s.substring(j, i))) {
                     dp[i] = true;
                     break; // No need to check further prefixes
