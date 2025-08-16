@@ -18,60 +18,67 @@ public class MinimumWindowSubstring {
 
     }
 
-   public static String minWindow(String s, String t) {
-       if(s.length() == 0 || t.length() == 0 || s.length() < t.length()){
+    // Time Complexity : O(n + m), where:
+    //n is the length of the string s.
+    //m is the length of the string t.
+   public static String minWindow(String source, String target) {
+       if (source.length() < target.length()) {
            return "";
        }
 
-       // Create a frequency map for characters in t
-       Map<Character, Integer> mapT = new HashMap<>();
-       // Populate the frequency map with characters from t
-       for(int i=0; i< t.length(); i++){
-           mapT.put(t.charAt(i), mapT.getOrDefault(t.charAt(i),0) + 1);
+       // Frequency of characters in target string
+       Map<Character, Integer> targetFreq = new HashMap<>();
+       for (char c : target.toCharArray()) {
+           targetFreq.put(c, targetFreq.getOrDefault(c, 0) + 1);
        }
 
-       int required = mapT.size();
-       int left = 0;
-       int right = 0;
-       int create = 0;
-         // This will store the length of the minimum window substring
-       int [] ans = {-1, 0, 0};
-       Map<Character, Integer> subStringMap = new HashMap<>();
+       int requiredUniqueChars = targetFreq.size();
+       int matchedUniqueChars = 0;
 
-       while(right < s.length()){
-           char currentChar = s.charAt(right);
-           // Add the current character to the substring map
-           subStringMap.put(currentChar, subStringMap.getOrDefault(currentChar, 0) + 1);
-              // If the current character's frequency matches the frequency in t, increment create
-           if(mapT.containsKey(currentChar) && subStringMap.get(currentChar).intValue() == mapT.get(currentChar).intValue()){
-               create++;
+       // Current window frequency
+       Map<Character, Integer> windowFreq = new HashMap<>();
+
+       int left = 0, right = 0;
+       int minWindowLength = Integer.MAX_VALUE;
+       int minWindowStart = 0;
+
+       while (right < source.length()) {
+           char rightChar = source.charAt(right);
+           windowFreq.put(rightChar, windowFreq.getOrDefault(rightChar, 0) + 1);
+
+           if (targetFreq.containsKey(rightChar) &&
+                   windowFreq.get(rightChar).intValue() == targetFreq.get(rightChar).intValue()) {
+               matchedUniqueChars++;
            }
-              // If we have a valid window (all characters in t are present in the substring)
-           while(left <= right && required == create){
-               currentChar = s.charAt(left);
-               if(ans[0] == -1 || ans[0] >= right - left + 1){
-                   ans[0] = right - left + 1;
-                   ans[1] = left;
-                   ans[2] = right;
+
+           // Try to shrink window from the left if all required chars are matched
+           while (matchedUniqueChars == requiredUniqueChars) {
+
+               // Check if the current window is smaller than the previously found minimum window
+               int currentWindowLength = right - left + 1;
+               if (currentWindowLength < minWindowLength) {
+                   // Update the new minimum window length and starting index
+                   minWindowLength = currentWindowLength;
+                   minWindowStart = left;
                }
 
-                // Remove the leftmost character from the substring map
-               subStringMap.put(currentChar,subStringMap.get(currentChar) - 1);
-                // If the frequency of the leftmost character is less than the frequency in t, decrement create
-               if(mapT.containsKey(currentChar) && subStringMap.get(currentChar).intValue() < mapT.get(currentChar).intValue()){
-                   create--;
+               char leftChar = source.charAt(left);
+               windowFreq.put(leftChar, windowFreq.get(leftChar) - 1);
+
+               // If the character being removed from the left is part of the target string
+               // AND its count in the current window falls below the required count,
+               // then this window is no longer fully valid → decrease matchedUniqueChars
+               if (targetFreq.containsKey(leftChar) &&
+                       windowFreq.get(leftChar) < targetFreq.get(leftChar)) {
+                   matchedUniqueChars--;
                }
                left++;
            }
            right++;
        }
 
-
-       if(ans[0] == -1){
-           return "";
-       }
-       else{
-           return s.substring(ans[1], ans[2] + 1);
-       }
+       return minWindowLength == Integer.MAX_VALUE
+               ? ""
+               : source.substring(minWindowStart, minWindowStart + minWindowLength);
     }
 }
