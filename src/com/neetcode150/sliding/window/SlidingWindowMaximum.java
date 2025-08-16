@@ -31,8 +31,9 @@ public class SlidingWindowMaximum {
         Deque<Integer> deque = new LinkedList<>();
 
         for (int i = 0; i < n; i++) {
-            // Remove the front element if it is out of the current window
-            if (!deque.isEmpty() && deque.peekFirst() < i - k + 1) {
+             // Remove the front element of the deque if it is outside the bounds of the current sliding window.
+            // This ensures that the deque only contains indices within the valid range of the window.
+            while (!deque.isEmpty() && deque.peekFirst() < i - k + 1) {
                 deque.removeFirst();
             }
 
@@ -46,6 +47,8 @@ public class SlidingWindowMaximum {
             deque.offer(i);
 
             // Add the maximum to the result (once the first window is processed)
+            // Add the maximum value of the current sliding window to the result array.
+            // The maximum value is located at the index stored at the front of the deque.
             if (i >= k - 1) {
                 result[i - k + 1] = nums[deque.peek()];
             }
@@ -54,18 +57,17 @@ public class SlidingWindowMaximum {
     }
     public static int[] maxSlidingWindowBruteForce(int[] nums, int k) {
         int n = nums.length;
-        if (n == 0 || k == 0) return new int[0];
+        if (n == 0 || k == 0) {
+            return new int[0];
+        }
 
         int[] result = new int[n - k + 1];
 
         for (int i = 0; i <= n - k; i++) {
-            int max = nums[i];
+            result[i] = nums[i];
             for (int j = i + 1; j < i + k; j++) {
-                if (nums[j] > max) {
-                    max = nums[j];
-                }
+                result[i] = Math.max(result[i], nums[j]);
             }
-            result[i] = max;
         }
 
         return result;
