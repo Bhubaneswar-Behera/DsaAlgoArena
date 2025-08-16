@@ -19,8 +19,8 @@ public class MinimumWindowSubstring {
     }
 
     // Time Complexity : O(n + m), where:
-    //n is the length of the string s.
-    //m is the length of the string t.
+    //n is the length of the string source.
+    //m is the length of the string target.
    public static String minWindow(String source, String target) {
        if (source.length() < target.length()) {
            return "";
