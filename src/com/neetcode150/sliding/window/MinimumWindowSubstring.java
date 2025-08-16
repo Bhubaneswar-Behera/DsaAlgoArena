@@ -46,6 +46,11 @@ public class MinimumWindowSubstring {
            char rightChar = source.charAt(right);
            windowFreq.put(rightChar, windowFreq.getOrDefault(rightChar, 0) + 1);
 
+           // If the character we just added (rightChar) is part of the target string
+           // AND the count of this character in the current window
+           // exactly matches the required count in the target string,
+           // then we can consider this character "fully matched".
+           // So, we increase the number of matchedUniqueChars.
            if (targetFreq.containsKey(rightChar) &&
                    windowFreq.get(rightChar).intValue() == targetFreq.get(rightChar).intValue()) {
                matchedUniqueChars++;
