@@ -34,7 +34,9 @@ public class MinStack {
     }
 
     public void pop() {
-        if (stack.isEmpty()) return;
+        if (stack.isEmpty()){
+            return;
+        }
         int removed = stack.pop();
         // If the popped value is the current minimum, pop it from minStack as well
         if (removed == minStack.peek()) {
