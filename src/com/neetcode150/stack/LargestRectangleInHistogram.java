@@ -19,6 +19,17 @@ public class LargestRectangleInHistogram {
         int maxArea = 0;
         int n = heights.length;
 
+        //left smallest nearest element
+        int[] leftSmallest = new int[n];
+        for (int i = 0; i < n; i++) {
+            // If the stack is not empty, we pop elements until we find a smaller element
+            while (!stack.isEmpty() && heights[stack.peek()] >= heights[i]) {
+                stack.pop();
+            }
+            leftSmallest[i] = stack.isEmpty() ? -1 : stack.peek();
+            stack.push(i);
+        }
+
         //Right smallest nearest element
         int[] rightSmallest = new int[n];
         for (int i = n - 1; i >= 0; i--) {
@@ -32,17 +43,6 @@ public class LargestRectangleInHistogram {
             stack.push(i);
         }
         stack.clear();
-
-        //left smallest nearest element
-        int[] leftSmallest = new int[n];
-        for (int i = 0; i < n; i++) {
-            // If the stack is not empty, we pop elements until we find a smaller element
-            while (!stack.isEmpty() && heights[stack.peek()] >= heights[i]) {
-                stack.pop();
-            }
-            leftSmallest[i] = stack.isEmpty() ? -1 : stack.peek();
-            stack.push(i);
-        }
 
         // Calculate the maximum area
         for (int i = 0; i < n ; i++) {
