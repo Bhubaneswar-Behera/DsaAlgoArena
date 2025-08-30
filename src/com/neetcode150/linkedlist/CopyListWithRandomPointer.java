@@ -7,6 +7,11 @@ package com.neetcode150.linkedlist;
  */
 public class CopyListWithRandomPointer {
 
+    public static void main(String[] args) {
+        //main method
+
+    }
+
     class Node {
         int val;
         Node next;
@@ -32,6 +37,7 @@ public class CopyListWithRandomPointer {
             current.next = newNode;
             current = newNode.next;
         }
+
         // Step 2: Set the "random pointers" for the copied nodes
         current = head;
         while (current != null) {
@@ -40,6 +46,7 @@ public class CopyListWithRandomPointer {
             }
             current = current.next.next;
         }
+
         // Step 3: Separate the copied nodes from the original list
         Node original = head;
         Node newHead = head.next;
@@ -55,7 +62,4 @@ public class CopyListWithRandomPointer {
         return newHead;
     }
 
-    public static void main(String[] args) {
-
-    }
 }
