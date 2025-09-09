@@ -9,38 +9,44 @@ public class KokoEatingBananas {
 
     public static void main(String[] args) {
         int[] piles = {1,4,3,2};
-        int h = 9;
-        System.out.println(minEatingSpeed(piles, h));
+        int hours = 9;
+        System.out.println(minEatingSpeed(piles, hours));
     }
-    public static int minEatingSpeed(int[] piles, int h) {
-        int minSpeed = 1;
+    public static int minEatingSpeed(int[] piles, int hours) {
+        int low = 1;
 
         // Find max pile size
-        int maxSpeed = 0;
+        int high = 0;
         for (int pile : piles){
-            maxSpeed = Math.max(maxSpeed, pile);
+            high = Math.max(high, pile);
         }
 
         // Binary search
-        while (minSpeed < maxSpeed) {
-            int mid = minSpeed + (maxSpeed - minSpeed) / 2;
+        while (low < high) {
+            int mid = low + (high - low) / 2;
 
-            if (canEatInTime(piles, h, mid)) {
-                maxSpeed = mid;
+            if (canEatInTime(piles, hours, mid)) {
+                high = mid; // try smaller speed
             }
             else {
-                minSpeed = mid + 1;
+                low = mid + 1; // need bigger speed
             }
         }
-        return minSpeed;
+        return low;
     }
-    private static boolean canEatInTime(int[] piles, int h, int speed) {
+
+    /**
+     *
+     * If Koko eats at speed bananas per hour, can she finish all piles within h hours?
+     *
+     */
+    private static boolean canEatInTime(int[] piles, int inputHours, int speed) {
         int hours = 0;
         for(int pile : piles) {
             hours = hours + (int) Math.ceil((double) pile / speed);
         }
 
-        return hours <= h;
+        return hours <= inputHours;
     }
 
 }
