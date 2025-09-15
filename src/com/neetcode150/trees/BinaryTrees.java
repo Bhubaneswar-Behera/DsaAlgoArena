@@ -50,6 +50,11 @@ public class BinaryTrees {
         System.out.print(root.data + " ");
     }
 
+    /**
+     * Level Order Traversal or Breadth First Search (BFS)
+     *
+     * @param root
+     */
     public static void levelOrder(Node root) {
         if (root == null) {
             return;
