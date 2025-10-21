@@ -14,28 +14,35 @@ public class LongestRepeatingCharacterReplacement {
         String s = "AABABBA";
         int k = 1;
         System.out.println(characterReplacement(s, k)); // Output: 4
-        //Explanation: The substring "AABAB" can be replaced with "AAAAA" by replacing one 'B' with 'A', resulting in a length of 5.
+        //Explanation: The substring "AABAB" can be replaced with "AAAAA" by replacing one 'B' with 'A',
+        // resulting in a length of 5.
     }
 
     public static int characterReplacement(String s, int k) {
         Map<Character, Integer> freqMap = new HashMap<>();
-        int maxFreq = 0;
+        int n = s.length();
+        int maxFreq = 0; //The maximum frequency of any single character in the window.
         int left = 0;
         int maxWindow = 0;
 
-        for (int right = 0; right < s.length(); right++) {
+        for (int right = 0; right < n; right++) {
             char currentChar = s.charAt(right);
             freqMap.put(currentChar, freqMap.getOrDefault(currentChar, 0) + 1);
 
+            //Update maxFreq — the count of the most frequent character in the current window.
             maxFreq = Math.max(maxFreq, freqMap.get(currentChar));
             int windowSize = right - left + 1;
 
+            //If this number exceeds k, it means we’ve used more replacements than allowed.
             if (windowSize - maxFreq > k) {
                 char leftChar = s.charAt(left);
+                //Decrease the count of leftChar in freqMap
                 freqMap.put(leftChar, freqMap.get(leftChar) - 1);
+                //Move left pointer forward by 1
                 left++;
             }
 
+            //Update maximum window size
             maxWindow = Math.max(maxWindow, right - left + 1);
         }
         return maxWindow;
