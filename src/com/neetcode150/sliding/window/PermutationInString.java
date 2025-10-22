@@ -1,8 +1,6 @@
 package com.neetcode150.sliding.window;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  *
@@ -30,10 +28,14 @@ public class PermutationInString {
 
         // Check every substring of s2 with length equal to s1
         for (int i = 0; i <= len2 - len1; i++) {
+            //At each iteration, extract the substring of s2 with the same length as s1.
             String sub = s2.substring(i, i + len1);
             char[] subChars = sub.toCharArray();
             Arrays.sort(subChars);
-            if (sortedS1.equals(new String(subChars))) {
+            String sortedSub = new String(subChars);
+
+            //If both are equal → it means the substring is a permutation (anagram) of s1.
+            if (sortedS1.equals(sortedSub)) {
                 return true;
             }
         }
