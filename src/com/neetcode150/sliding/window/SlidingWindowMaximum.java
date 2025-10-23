@@ -50,7 +50,7 @@ public class SlidingWindowMaximum {
             // Add the maximum value of the current sliding window to the result array.
             // The maximum value is located at the index stored at the front of the deque.
             if (i >= k - 1) {
-                result[i - k + 1] = nums[deque.peek()];
+                result[i - k + 1] = nums[deque.peekFirst()];
             }
         }
         return result;
