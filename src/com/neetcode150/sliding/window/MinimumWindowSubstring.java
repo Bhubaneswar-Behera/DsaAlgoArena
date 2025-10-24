@@ -21,69 +21,65 @@ public class MinimumWindowSubstring {
     // Time Complexity : O(n + m), where:
     //n is the length of the string source.
     //m is the length of the string target.
-   public static String minWindow(String source, String target) {
-       if (source.length() < target.length()) {
+   public static String minWindow(String s, String t) {
+       if (s.length() < t.length()) {
            return "";
        }
 
-       // Frequency of characters in target string
-       Map<Character, Integer> targetFreq = new HashMap<>();
-       for (char c : target.toCharArray()) {
-           targetFreq.put(c, targetFreq.getOrDefault(c, 0) + 1);
+       // Step 1: Frequency map of all chars in t
+       Map<Character, Integer> targetMap = new HashMap<>();
+       for (char c : t.toCharArray()) {
+           targetMap.put(c, targetMap.getOrDefault(c, 0) + 1);
        }
 
-       int requiredUniqueChars = targetFreq.size();
-       int matchedUniqueChars = 0;
+       int required = targetMap.size(); // how many unique chars to match
+       int formed = 0; // how many have matched so far
 
-       // Current window frequency
-       Map<Character, Integer> windowFreq = new HashMap<>();
+       // Step 2: Frequency map of all chars in source
+       Map<Character, Integer> windowMap = new HashMap<>();
 
-       int left = 0, right = 0;
-       int minWindowLength = Integer.MAX_VALUE;
-       int minWindowStart = 0;
+       int left = 0;
+       int right = 0;
+       int minLen = Integer.MAX_VALUE;
+       int start = 0; // to track starting index of result
 
-       while (right < source.length()) {
-           char rightChar = source.charAt(right);
-           windowFreq.put(rightChar, windowFreq.getOrDefault(rightChar, 0) + 1);
+       // Step 2: Expand the window
+       while (right < s.length()) {
+           // Add current right char to window map
+           char characterRight = s.charAt(right);
+           windowMap.put(characterRight, windowMap.getOrDefault(characterRight, 0) + 1);
 
-           // If the character we just added (rightChar) is part of the target string
-           // AND the count of this character in the current window
-           // exactly matches the required count in the target string,
-           // then we can consider this character "fully matched".
-           // So, we increase the number of matchedUniqueChars.
-           if (targetFreq.containsKey(rightChar) &&
-                   windowFreq.get(rightChar).intValue() == targetFreq.get(rightChar).intValue()) {
-               matchedUniqueChars++;
+           // Check if current char count matches target char count
+           if (targetMap.containsKey(characterRight)
+                   && windowMap.get(characterRight).intValue() == targetMap.get(characterRight).intValue()) {
+               formed++;
            }
 
-           // Try to shrink window from the left if all required chars are matched
-           while (matchedUniqueChars == requiredUniqueChars) {
+           // Step 3: Try to shrink from the left
+           while (left <= right && formed == required) {
+               char characterLeft = s.charAt(left);
+               int windowLen = right - left + 1;
 
-               // Check if the current window is smaller than the previously found minimum window
-               int currentWindowLength = right - left + 1;
-               if (currentWindowLength < minWindowLength) {
-                   // Update the new minimum window length and starting index
-                   minWindowLength = currentWindowLength;
-                   minWindowStart = left;
+               // Update answer if this window is smaller
+               if (windowLen < minLen) {
+                   minLen = windowLen;
+                   start = left;
                }
 
-               char leftChar = source.charAt(left);
-               windowFreq.put(leftChar, windowFreq.get(leftChar) - 1);
+               // Remove leftmost character
+               windowMap.put(characterLeft, windowMap.get(characterLeft) - 1);
 
-               // If the character being removed from the left is part of the target string
-               // AND its count in the current window falls below the required count,
-               // then this window is no longer fully valid → decrease matchedUniqueChars
-               if (targetFreq.containsKey(leftChar) &&
-                       windowFreq.get(leftChar) < targetFreq.get(leftChar)) {
-                   matchedUniqueChars--;
+               // If removing breaks the match, reduce 'formed'
+               if (targetMap.containsKey(characterLeft) && windowMap.get(characterLeft) < targetMap.get(characterLeft)) {
+                   formed--;
                }
-               left++;
+
+               left++; // move left pointer
            }
-           right++;
+
+           right++; // expand window
        }
 
-       return minWindowLength == Integer.MAX_VALUE
-               ? ""
-               : source.substring(minWindowStart, minWindowStart + minWindowLength);
+       return minLen == Integer.MAX_VALUE ? "" : s.substring(start, start + minLen);
     }
 }
