@@ -20,10 +20,6 @@ public class GenerateParentheses {
     }
     private static void generateParenthesis(int n, int openingBracket, int closingBracket, List<String> result, String current) {
         // If the current string has reached the maximum length
-        /*if (current.length() == 2 * n) {
-            result.add(current);
-            return;
-        }*/
         // If we have used all opening and closing brackets
         if(n == openingBracket && n == closingBracket) {
             result.add(current);
