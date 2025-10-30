@@ -5,7 +5,7 @@ import java.util.Stack;
 /**
  *
  * https://neetcode.io/problems/largest-rectangle-in-histogram
- * Reference : https://www.youtube.com/watch?v=ysy1o-QEj3k&t=1650s
+ * Reference : https://www.youtube.com/watch?v=ysy1o-QEj3k&t=377s
  */
 public class LargestRectangleInHistogram {
 
