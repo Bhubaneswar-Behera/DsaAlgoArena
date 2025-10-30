@@ -29,6 +29,7 @@ public class LargestRectangleInHistogram {
             leftSmallest[i] = stack.isEmpty() ? -1 : stack.peek();
             stack.push(i);
         }
+        stack.clear();
 
         //Right smallest nearest element
         int[] rightSmallest = new int[n];
