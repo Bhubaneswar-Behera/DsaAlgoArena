@@ -20,10 +20,12 @@ public class RemoveNthNodeFromEndOfList {
         if (head == null || n <= 0) {
             return head; // Edge case: if the list is empty or n is invalid
         }
-        //
+        // Create a dummy node to handle edge cases
         ListNode dummy = new ListNode(0);
 
+        // Point the dummy node to the head of the list
         dummy.next = head;
+        // Initialize two pointers
         ListNode first = dummy;
         ListNode second = dummy;
 
