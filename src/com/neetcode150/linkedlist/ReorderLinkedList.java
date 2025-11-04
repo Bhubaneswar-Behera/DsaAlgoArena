@@ -53,19 +53,19 @@ public class ReorderLinkedList {
             fast = fast.next.next; // move fast by 2 steps
         }
         // Step 2: Reverse the second half of the linked list
-        ListNode prev = null;
-        ListNode current = slow;
-        ListNode nextTemp = null;
-        while (current != null) {
-            nextTemp = current.next; // store the next node
-            current.next = prev; // reverse the link
-            prev = current; // move prev to current
-            current = nextTemp; // move to the next node
+        ListNode previousNode = null;
+        ListNode currentNode = slow;
+        ListNode nextNode = null;
+        while (currentNode != null) {
+            nextNode = currentNode.next; // store the next node
+            currentNode.next = previousNode; // reverse the link
+            previousNode = currentNode; // move prev to current
+            currentNode = nextNode; // move to the next node
         }
 
         // Step 3: Merge the two halves
         ListNode first = head; // start from the first half
-        ListNode second = prev; // start from the reversed second half
+        ListNode second = previousNode; // start from the reversed second half
         while (second.next != null) { // while there are nodes in the second half
             ListNode temp1 = first.next; // store the next node of the first half
             ListNode temp2 = second.next; // store the next node of the second half
