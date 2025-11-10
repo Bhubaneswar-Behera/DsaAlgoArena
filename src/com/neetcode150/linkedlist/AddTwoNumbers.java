@@ -14,6 +14,15 @@ public class AddTwoNumbers {
       ListNode(int val, ListNode next) { this.val = val; this.next = next; }
   }
     public static void main(String[] args) {
+        // Example usage
+        AddTwoNumbers addTwoNumbers = new AddTwoNumbers();
+        ListNode l1 = addTwoNumbers.new ListNode(2, addTwoNumbers.new ListNode(4, addTwoNumbers.new ListNode(3)));
+        ListNode l2 = addTwoNumbers.new ListNode(5, addTwoNumbers.new ListNode(6, addTwoNumbers.new ListNode(4)));
+        ListNode result = addTwoNumbers.addTwoNumbers(l1, l2);
+        while (result != null) {
+            System.out.print(result.val + " ");
+            result = result.next;
+        }
 
     }
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
@@ -37,11 +46,12 @@ public class AddTwoNumbers {
             }
 
             carry = sum / 10;    // Get sum and carry
-            sum = sum % 10;
+            sum = sum % 10;      // Get the last digit
             currentNode.next = new ListNode(sum);
             currentNode = currentNode.next;
         }
 
+        // If there is a carry left
         if (carry == 1) {
             currentNode.next = new ListNode(1);
         }
