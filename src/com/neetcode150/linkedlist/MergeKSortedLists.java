@@ -34,6 +34,7 @@ public class MergeKSortedLists {
         return mergeLists(lists, 0, lists.length - 1);
     }
     private static ListNode mergeLists(ListNode[] lists, int left, int right) {
+        // Base case: if there is only one list, return it
         if (left == right) {
             return lists[left];
         }
