@@ -13,7 +13,16 @@ import java.util.Queue;
 public class BinaryTreeRightSideView {
 
     public static void main(String[] args) {
+        // Example usage
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.left.right = new TreeNode(5);
+        root.right.right = new TreeNode(4);
 
+        BinaryTreeRightSideView solution = new BinaryTreeRightSideView();
+        List<Integer> rightSideView = solution.rightSideView(root);
+        System.out.println("Right Side View: " + rightSideView); // Output: [1, 3, 4]
     }
     //Time Complexity: O(N) where N is the number of nodes in the tree.
     //Space Complexity: O(N) for the queue used in BFS.
