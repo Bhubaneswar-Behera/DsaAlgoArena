@@ -31,9 +31,15 @@ public class LRUCache {
         this.capacity = capacity;
         map = new HashMap<>();
 
-        // Dummy head and tail
-        head = new Node(0, 0);
-        tail = new Node(0, 0);
+        head = new Node(0, 0);  // dummy head
+        tail = new Node(0, 0); // dummy tail
+        //Why dummy?
+        //Ans :
+        //So that :
+        //We never deal with null
+        //Insert/remove logic becomes simple
+        //No edge-case for empty list
+
         head.next = tail;
         tail.prev = head;
     }
@@ -42,10 +48,10 @@ public class LRUCache {
         if (!map.containsKey(key)) {
             return -1;
         }
-        Node node = map.get(key);
+        Node node = map.get(key);// Fetch node from map
         remove(node);// Remove the node from its current position
         insertAtHead(node);// Insert it at the head (most recently used)
-        return node.value;
+        return node.value;// Return value
     }
 
     public void put(int key, int value) {
@@ -56,8 +62,9 @@ public class LRUCache {
             insertAtHead(node);// Insert it at the head (most recently used)
         } else {
             if (map.size() == capacity) {// If the cache is full
-                map.remove(tail.prev.key);// Remove the least recently used node
-                remove(tail.prev);// Remove it from the linked list
+                Node lru = tail.prev; // is the least recently used node
+                map.remove(lru.key);// Remove the least recently used node from map
+                remove(lru);// Remove it from the linked list
             }
             Node newNode = new Node(key, value);// Create a new node
             map.put(key, newNode);// Add it to the map
@@ -71,7 +78,9 @@ public class LRUCache {
         node.next.prev = node.prev;// Connect the next node to the previous node
     }
 
-    // Inserts the node right after the head
+    // Inserts the node right after the head because Head → Most Recently Used side.
+    // After insertion:
+    // Head <-> NewNode <-> OldFirstNode ...
     private void insertAtHead(Node node) {
         node.next = head.next;// Connect the new node to the next node
         node.next.prev = node;// Connect the next node's previous to the new node
