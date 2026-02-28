@@ -5,6 +5,8 @@ package com.neetcode150.array.and.hashing;
  * https://www.geeksforgeeks.org/problems/kadanes-algorithm-1587115620/1
  * maxSubarraySum or Kadanes Algorithm
  *
+ * Time Complexity: O(n)
+ * Space Complexity: O(1)
  */
 public class MaxSubarraySumOrKadanesAlgorithm {
     public static void main(String[] args) {
@@ -20,7 +22,9 @@ public class MaxSubarraySumOrKadanesAlgorithm {
 
         for (int i = 0; i < n ; i++) {
             currentSum = currentSum + arr[i];
+            //If the current running sum is greater than previous max, update it.
             maxSum = Math.max(maxSum, currentSum);
+            //If the current running sum is less than 0, reset it to 0.
             if (currentSum < 0){
                 currentSum = 0;
             }
