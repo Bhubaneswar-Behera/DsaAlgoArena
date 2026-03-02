@@ -55,6 +55,11 @@ public class SlidingWindowMaximum {
         }
         return result;
     }
+
+    /**
+     * Time Complexity: O(n * k)
+     * Space Complexity: O(1)
+     */
     public static int[] maxSlidingWindowBruteForce(int[] nums, int k) {
         int n = nums.length;
         if (n == 0 || k == 0) {
