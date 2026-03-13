@@ -19,6 +19,8 @@ public class WordLadder {
         //Expected output: 5
         // Explanation: The sequence is "hit" -> "hot" -> "dot" -> "dog" -> "cog"
     }
+    //Time Complexity: O(M * N * 26 * L)
+    //Space Complexity: O(M * N)
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         Set<String> wordSet = new HashSet<>(wordList);
         if (!wordSet.contains(endWord)) {
