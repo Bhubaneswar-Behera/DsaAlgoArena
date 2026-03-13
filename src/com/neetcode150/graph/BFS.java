@@ -5,14 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class BFS {
-    static class Edge {
-        int src, dest;
 
-        public Edge(int src, int dest) {
-            this.src = src;
-            this.dest = dest;
-        }
-    }
     public static void createGraph(ArrayList<Edge> graph[]) {
         for (int i = 0; i < graph.length; i++) {
             graph[i] = new ArrayList<>();
@@ -56,7 +49,7 @@ public class BFS {
                 // Add all the unvisited neighbors to the queue
                 for (int i = 0; i < graph[current].size(); i++) {
                     Edge edge = graph[current].get(i);
-                    queue.add(edge.dest);
+                    queue.add(edge.destination);
                 }
             }
         }

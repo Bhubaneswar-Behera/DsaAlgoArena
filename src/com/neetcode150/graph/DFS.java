@@ -4,16 +4,6 @@ import java.util.ArrayList;
 
 public class DFS {
 
-    static class Edge {
-        int src;
-        int dest;
-
-        public Edge(int src, int dest) {
-            this.src = src;
-            this.dest = dest;
-        }
-    }
-
     public static void createGraph(ArrayList<Edge> graph[]) {
         for (int i = 0; i < graph.length; i++) {
             graph[i] = new ArrayList<>();
@@ -53,9 +43,9 @@ public class DFS {
             // Get the edge from the current node
             Edge edge = graph[current].get(i);
             // If the destination of the edge is not visited, perform DFS on it
-            if (visited[edge.dest] == false) {
+            if (visited[edge.destination] == false) {
                 // Recursive call to DFS for the destination node
-                dfs(graph, edge.dest, visited);
+                dfs(graph, edge.destination, visited);
             }
         }
     }
