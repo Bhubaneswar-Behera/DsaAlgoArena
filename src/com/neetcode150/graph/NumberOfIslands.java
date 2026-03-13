@@ -16,7 +16,8 @@ public class NumberOfIslands {
         };
         System.out.println("Number of islands: " + numIslands(grid)); // Output: 3
     }
-
+ //Time Complexity: O(rows * cols)
+ //Space Complexity: O(rows * cols)
     public static int numIslands(char[][] grid) {
         if (grid == null || grid.length == 0 || grid[0].length == 0) {
             return 0;
