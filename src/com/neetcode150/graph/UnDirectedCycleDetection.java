@@ -2,6 +2,10 @@ package com.neetcode150.graph;
 
 import java.util.ArrayList;
 
+/**
+ *
+ * Note : Study Cycle Detection in (Undirected Graph) before Directed Graph
+ */
 public class UnDirectedCycleDetection {
 
     public static void main(String[] args) {
@@ -37,6 +41,8 @@ public class UnDirectedCycleDetection {
         graph[5].add(new Edge(5, 4));
     }
 
+    //Time Complexity: O(V + E)
+    //Space Complexity: O(V)
     public static boolean isCycleUndirected(ArrayList<Edge> graph[], boolean visited[], int current, int parent) {
         visited[current] = true;
 
