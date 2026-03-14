@@ -37,6 +37,6 @@ public class MergeIntervals {
         }
 
         // Step 3: Convert the list to an array and return
-        return merged.toArray(new int[merged.size()][]);
+        return merged.toArray(int[][] :: new);
     }
 }
