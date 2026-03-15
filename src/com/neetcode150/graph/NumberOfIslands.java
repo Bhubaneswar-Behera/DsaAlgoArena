@@ -28,10 +28,10 @@ public class NumberOfIslands {
         int rows = grid.length;
         int cols = grid[0].length;
 
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                if (grid[i][j] == '1') {
-                    dfs(grid, i, j);
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                if (grid[row][col] == '1') {
+                    dfs(grid, row, col);
                     count++;
                 }
             }
@@ -40,20 +40,20 @@ public class NumberOfIslands {
         return count;
     }
 
-    private static void dfs(char[][] grid, int i, int j) {
+    private static void dfs(char[][] grid, int row, int col) {
         // Check for out of bounds and if the cell is water ('0')
-        if (i < 0 || i >= grid.length
-                || j < 0 || j >= grid[0].length
-                || grid[i][j] == '0') {
+        if (row < 0 || row >= grid.length
+                || col < 0 || col >= grid[0].length
+                || grid[row][col] == '0') {
             return;
         }
 
-        grid[i][j] = '0'; // Mark the cell as visited
+        grid[row][col] = '0'; // Mark the cell as visited
 
         // Explore all four directions
-        dfs(grid, i + 1, j); //bottom
-        dfs(grid, i - 1, j);//top
-        dfs(grid, i, j + 1);//right
-        dfs(grid, i, j - 1);//left
+        dfs(grid, row + 1, col); //bottom
+        dfs(grid, row - 1, col);//top
+        dfs(grid, row, col + 1);//right
+        dfs(grid, row, col - 1);//left
     }
 }
