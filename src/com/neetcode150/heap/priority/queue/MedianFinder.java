@@ -34,7 +34,7 @@ public class MedianFinder {
         // Ensure the largest of the max-heap is less than or equal to the smallest of the min-heap
         minHeap.offer(maxHeap.poll());
 
-
+        // Balance the heaps
         if (maxHeap.size() < minHeap.size()) {
             maxHeap.offer(minHeap.poll());
         }
