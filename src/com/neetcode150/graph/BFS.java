@@ -38,6 +38,7 @@ public class BFS {
         Queue<Integer> queue = new LinkedList<>();
         boolean[] visited = new boolean[V];
 
+        //Add the first node to the queue
         queue.add(0);
         while (!queue.isEmpty()) {
             int current = queue.remove();
