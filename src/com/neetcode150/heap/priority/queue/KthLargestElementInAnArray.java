@@ -13,10 +13,12 @@ public class KthLargestElementInAnArray {
         int k = 2;
         System.out.println(findKthLargest(nums, k)); // Output: 5
     }
+    //Time Complexity : O(nlogk)
+    //Space Complexity : O(k)
     public static int findKthLargest(int[] nums, int k) {
-
+        // Use a min-heap to keep track of the k largest elements
         PriorityQueue<Integer> minHeap = new PriorityQueue<>();
-
+        //
         for (int num : nums) {
             minHeap.offer(num);
 
