@@ -17,9 +17,10 @@ public class FindMinimumInRotatedSortedArray {
         while (left < right) {
             int mid = left + (right - left) / 2;
 
+            //if mid is greater than right, then minimum is in the right half
             if (nums[mid] > nums[right]) {
                 left = mid + 1;
-            } else {
+            } else { //if mid is less than right, then minimum is in the left half
                 right = mid;
             }
         }

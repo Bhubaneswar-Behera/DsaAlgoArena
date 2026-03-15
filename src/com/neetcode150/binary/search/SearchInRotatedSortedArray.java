@@ -20,6 +20,7 @@ public class SearchInRotatedSortedArray {
         while (left <= right) {
             int mid = left + (right - left) / 2;
 
+            //if mid is equal to target, return mid
             if (nums[mid] == target) {
                 return mid;
             }
