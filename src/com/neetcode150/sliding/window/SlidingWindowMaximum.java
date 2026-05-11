@@ -25,34 +25,37 @@ public class SlidingWindowMaximum {
             return new int[0];
         }
         int n = nums.length;
-        int[] result = new int[n - k + 1];// result array to store the maximums
+        int[] result = new int[n - k + 1];
 
-        // Deque to store indices
-        Deque<Integer> deque = new LinkedList<>();
+        Deque<Integer> maxDeque = new ArrayDeque<>();
 
-        for (int i = 0; i < n; i++) {
-             // Remove the front element of the deque if it is outside the bounds of the current sliding window.
-            // This ensures that the deque only contains indices within the valid range of the window.
-            while (!deque.isEmpty() && deque.peekFirst() < i - k + 1) {
-                deque.removeFirst();
+        int resultIndex = 0;
+
+        for (int windowEnd = 0; windowEnd < n; windowEnd++) {
+
+            // Remove indices outside current window
+            while (!maxDeque.isEmpty() &&
+                    maxDeque.peekFirst() <= windowEnd - k) {
+
+                maxDeque.pollFirst();
             }
 
-            // Remove elements from the back of deque if they are smaller than nums[i].
-            // as Smaller numbers can’t be the max if there's a bigger number after them.
-            while (!deque.isEmpty() && nums[deque.peekLast()] < nums[i]) {
-                deque.removeLast();
+            // Remove smaller elements
+            while (!maxDeque.isEmpty() &&
+                    nums[maxDeque.peekLast()] <= nums[windowEnd]) {
+
+                maxDeque.pollLast();
             }
 
-            // Add the current index
-            deque.offer(i);
+            // Add current index
+            maxDeque.offerLast(windowEnd);
 
-            // Add the maximum to the result (once the first window is processed)
-            // Add the maximum value of the current sliding window to the result array.
-            // The maximum value is located at the index stored at the front of the deque.
-            if (i >= k - 1) {
-                result[i - k + 1] = nums[deque.peekFirst()];
+            // Start storing result once first window is formed
+            if (windowEnd >= k - 1) {
+                result[resultIndex++] = nums[maxDeque.peekFirst()];
             }
         }
+
         return result;
     }
 
