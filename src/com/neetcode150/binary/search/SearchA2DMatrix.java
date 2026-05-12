@@ -18,21 +18,34 @@ public class SearchA2DMatrix {
     }
 
     public static boolean searchMatrix(int[][] matrix, int target) {
-        int n = matrix.length;
-        int m = matrix[0].length;
-        int i = 0;
-        int j = m - 1;
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return false;
+        }
 
-        while(i < n && j >= 0){
-            if(matrix[i][j] == target){
+        int totalRows = matrix.length;
+        int totalColumns = matrix[0].length;
+
+        int currentRow = 0;
+        int currentColumn = totalColumns - 1;
+
+        // Start from top-right corner
+        while (currentRow < totalRows && currentColumn >= 0) {
+
+            int currentValue = matrix[currentRow][currentColumn];
+
+            if (currentValue == target) {
                 return true;
             }
-            if ( target > matrix[i][j]){
-                i++;
-            } else{
-                j--;
+
+            // Move downward if target is greater
+            if (target > currentValue) {
+                currentRow++;
+            } else {
+                // Move left if target is smaller
+                currentColumn--;
             }
         }
+
         return false;
     }
 
