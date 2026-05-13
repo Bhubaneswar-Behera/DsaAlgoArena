@@ -4,6 +4,10 @@ package com.neetcode150.linkedlist;
  *
  * https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/
  * Reference : https://www.youtube.com/watch?v=6gI8OMoac4Q
+ *
+ * Time Complexity :O(L) Where: L = number of nodes in the linked list
+ * Space Complexity : O(1) Why? No extra data structure proportional to input size is used.
+ *
  */
 public class RemoveNthNodeFromEndOfList {
     public class ListNode {
@@ -42,7 +46,7 @@ public class RemoveNthNodeFromEndOfList {
 
         // Now second pointer is at the node before the one we want to remove
         second.next = second.next.next;
-        //
+
         return dummy.next;
     }
 }
