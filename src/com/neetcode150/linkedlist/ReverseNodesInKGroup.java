@@ -20,6 +20,12 @@ public class ReverseNodesInKGroup {
         int k = 2;
         ListNode reversedList = solution.reverseKGroup(head, k);
 
+        //print original list
+        while (head != null) {
+            System.out.print(head.val + " ");
+            head = head.next;
+        }
+        System.out.println();
         // Print the reversed list
         while (reversedList != null) {
             System.out.print(reversedList.val + " ");
