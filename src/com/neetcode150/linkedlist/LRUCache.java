@@ -72,7 +72,7 @@ public class LRUCache {
         }
     }
 
-    // Removes the node from the linked list
+    // Removes th e node from the linked list
     private void remove(Node node) {
         node.prev.next = node.next;// Connect the previous node to the next node
         node.next.prev = node.prev;// Connect the next node to the previous node
