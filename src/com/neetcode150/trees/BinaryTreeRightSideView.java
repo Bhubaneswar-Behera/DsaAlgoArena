@@ -26,35 +26,58 @@ public class BinaryTreeRightSideView {
     }
     //Time Complexity: O(N) where N is the number of nodes in the tree.
     //Space Complexity: O(N) for the queue used in BFS.
+    // Returns the nodes visible from the right side of the binary tree
     public List<Integer> rightSideView(TreeNode root) {
+
+        // Stores the final right-side view result
         List<Integer> result = new ArrayList<>();
+
+        // If tree is empty, return empty result
         if (root == null) {
             return result;
         }
 
+        // Queue is used for Level Order Traversal (BFS)
         Queue<TreeNode> queue = new LinkedList<>();
+
+        // Start traversal from root node
         queue.add(root);
 
+        // Continue until all nodes are processed
         while (!queue.isEmpty()) {
-            int levelSize = queue.size();  // Number of nodes at the current level
-            int lastValue = 0;  // Store the last node's value of the level
 
+            // Number of nodes present at current level
+            int levelSize = queue.size();
+
+            // Stores the value of the last node at current level
+            int lastValue = 0;
+
+            // Process all nodes of current level
             for (int i = 0; i < levelSize; i++) {
-                TreeNode node = queue.poll();
-                lastValue = node.val;  // Update lastValue with the current node
 
-                // Add child nodes to queue for next level processing
+                // Remove front node from queue
+                TreeNode node = queue.poll();
+
+                // Keep updating lastValue
+                // Final value after loop ends will be the rightmost node
+                lastValue = node.val;
+
+                // Add left child to queue for next level processing
                 if (node.left != null) {
                     queue.offer(node.left);
                 }
+
+                // Add right child to queue for next level processing
                 if (node.right != null) {
                     queue.offer(node.right);
                 }
             }
 
-            result.add(lastValue);  // Add the last node's value of this level
+            // Add the rightmost node value of current level
+            result.add(lastValue);
         }
 
+        // Return right-side view of the binary tree
         return result;
     }
 }
