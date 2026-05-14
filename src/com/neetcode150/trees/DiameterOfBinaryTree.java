@@ -6,6 +6,34 @@ package com.neetcode150.trees;
  */
 public class DiameterOfBinaryTree {
 
+    public static void main(String[] args) {
+
+        /*
+                  1
+                /   \
+               2     3
+              / \
+             4   5
+
+            Height = 3
+            Diameter = 3
+        */
+
+        TreeNode root = new TreeNode(1);
+
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+
+        root.left.left = new TreeNode(4);
+        root.left.right = new TreeNode(5);
+
+        int height = heightOfTree(root);
+        int diameter = diameterOfTree(root);
+
+        System.out.println("Height of Tree: " + height);
+        System.out.println("Diameter of Tree: " + diameter);
+    }
+
     public static int heightOfTree(TreeNode root) {
         if (root == null) {
             return 0;
