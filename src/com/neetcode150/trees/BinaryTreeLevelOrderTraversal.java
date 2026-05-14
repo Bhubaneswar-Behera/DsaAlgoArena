@@ -23,33 +23,58 @@ public class BinaryTreeLevelOrderTraversal {
         List<List<Integer>> result = tree.levelOrder(root);
         System.out.println(result); // [[1], [2, 3], [4, 5, 6]]
     }
+    // Performs Level Order Traversal (Breadth-First Search)
+// and returns node values level by level
     public List<List<Integer>> levelOrder(TreeNode root) {
+
+        // Stores the final result
         List<List<Integer>> result = new ArrayList<>();
+
+        // If tree is empty, return empty result
         if (root == null) {
             return result;
         }
 
+        // Queue is used for BFS traversal
         Queue<TreeNode> queue = new LinkedList<>();
+
+        // Add root node to start traversal
         queue.add(root);
 
+        // Continue traversal until queue becomes empty
         while (!queue.isEmpty()) {
-           int levelSize = queue.size();// Get the number of nodes at the current level
-           List<Integer> currentLevel = new ArrayList<>();// Create a list to store the values of nodes at the current level
 
-            // Iterate through all nodes at the current level
-           for (int i = 0; i < levelSize; i++) {
-               TreeNode currentNode = queue.poll();// Remove the front node from the queue
-               currentLevel.add(currentNode.val);
+            // Number of nodes present at current level
+            int levelSize = queue.size();
 
-               if (currentNode.left != null) {
+            // Stores all node values of current level
+            List<Integer> currentLevel = new ArrayList<>();
+
+            // Process all nodes of current level
+            for (int i = 0; i < levelSize; i++) {
+
+                // Remove front node from queue
+                TreeNode currentNode = queue.poll();
+
+                // Add current node value to level list
+                currentLevel.add(currentNode.val);
+
+                // Add left child to queue if present
+                if (currentNode.left != null) {
                     queue.add(currentNode.left);
-               }
-               if (currentNode.right != null) {
+                }
+
+                // Add right child to queue if present
+                if (currentNode.right != null) {
                     queue.add(currentNode.right);
-               }
+                }
             }
+
+            // Add current level data to final result
             result.add(currentLevel);
         }
+
+        // Return level order traversal result
         return result;
     }
 }
