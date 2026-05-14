@@ -19,18 +19,35 @@ public class KthSmallestElementInABST {
         int k = 1; // Find the 1st smallest element
         System.out.println(solution.kthSmallest(root, k)); // Output: 1
     }
+    // Returns the kth smallest element in a Binary Search Tree (BST)
     public int kthSmallest(TreeNode root, int k) {
+
+        // Stores inorder traversal of BST
+        // Inorder traversal of BST gives elements in sorted order
         List<Integer> inorder = new ArrayList<>();
+
+        // Populate inorder list
         inOrderTraversal(root, inorder);
+
+        // kth smallest element will be present at index (k - 1)
         return inorder.get(k - 1);
     }
+
+    // Performs inorder traversal of the binary tree
     private void inOrderTraversal(TreeNode node, List<Integer> inorder) {
-        if (node == null){
+
+        // Base condition
+        if (node == null) {
             return;
         }
 
+        // Traverse left subtree
         inOrderTraversal(node.left, inorder);
+
+        // Visit current node
         inorder.add(node.val);
+
+        // Traverse right subtree
         inOrderTraversal(node.right, inorder);
     }
 }
