@@ -20,25 +20,37 @@ public class ValidateBinarySearchTree {
     }
     //Time Complexity: O(n)
     //Space Complexity: O(n)
+    // Checks whether a binary tree is a valid Binary Search Tree (BST)
     public boolean isValidBST(TreeNode root) {
+
+        // Stores inorder traversal of the tree
+        // In a valid BST, inorder traversal should be strictly increasing
         List<Integer> inOrderList = new LinkedList<>();
 
-        // Populate the list
+        // Populate the inorder traversal list
         helper(root, inOrderList);
 
+        // Assume tree is BST initially
         boolean isBST = true;
-        int prev = inOrderList.get(0);// Initialize previous element with the first element of inOrderList
+
+        // Store first element as previous value
+        int prev = inOrderList.get(0);
+
+        // Traverse remaining elements in inorder list
         for (int i = 1; i < inOrderList.size(); i++) {
 
-            // Check if new element is smaller than previous element
-            // or if the element is duplicate
+            // In BST:
+            // Current value must always be greater than previous value
+            // If smaller OR duplicate found -> not a valid BST
             if (inOrderList.get(i) <= prev) {
                 isBST = false;
             }
 
-            prev = inOrderList.get(i);//keep updating the previous element
+            // Update previous element
+            prev = inOrderList.get(i);
         }
 
+        // Return final BST validation result
         return isBST;
     }
 
