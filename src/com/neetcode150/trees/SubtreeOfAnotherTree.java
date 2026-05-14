@@ -23,25 +23,45 @@ public class SubtreeOfAnotherTree {
         boolean result = solution.isSubtree(root, subRoot);
         System.out.println("Is subtree: " + result); // Should print true
     }
+    // Checks whether subRoot exists as a subtree inside root
     public boolean isSubtree(TreeNode root, TreeNode subRoot) {
+        // An empty tree is always a subtree
         if (subRoot == null) {
             return true;
         }
+
+        // If main tree becomes empty but subRoot still exists,
+        // then subtree cannot be found
         if (root == null) {
             return false;
         }
+
+        // Check if both trees are identical starting from current node
         if (isIdentical(root, subRoot)) {
             return true;
         }
-        return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
+
+        // Otherwise, recursively check in left and right subtrees
+        return isSubtree(root.left, subRoot)
+                || isSubtree(root.right, subRoot);
     }
+    // Checks whether two trees are exactly identical
     private boolean isIdentical(TreeNode root, TreeNode subRoot) {
+
+        // Both nodes are null -> trees match
         if (root == null && subRoot == null) {
             return true;
         }
-        if (root == null || subRoot == null || root.val != subRoot.val) {
+
+        // If one node is null OR values are different,
+        // then trees are not identical
+        if (root == null || subRoot == null
+                || root.val != subRoot.val) {
             return false;
         }
-        return isIdentical(root.left, subRoot.left) && isIdentical(root.right, subRoot.right);
+
+        // Recursively compare left and right subtrees
+        return isIdentical(root.left, subRoot.left)
+                && isIdentical(root.right, subRoot.right);
     }
 }
