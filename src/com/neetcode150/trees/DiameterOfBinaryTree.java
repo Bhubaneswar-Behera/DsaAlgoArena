@@ -28,7 +28,7 @@ public class DiameterOfBinaryTree {
         root.left.right = new TreeNode(5);
 
         int height = heightOfTree(root);
-        int diameter = diameterOfTree(root);
+        int diameter = diameterOfBinaryTree(root);
 
         System.out.println("Height of Tree: " + height);
         System.out.println("Diameter of Tree: " + diameter);
@@ -45,15 +45,15 @@ public class DiameterOfBinaryTree {
     }
 
     //Time Complexity: O(n2)
-    public static int diameterOfTree(TreeNode root) {
+    public static int diameterOfBinaryTree(TreeNode root) {
         if (root == null) {
             return 0;
         }
         int leftHeight = heightOfTree(root.left);
         int rightHeight = heightOfTree(root.right);
         int currentDiameter = leftHeight + rightHeight;
-        int leftDiameter = diameterOfTree(root.left);
-        int rightDiameter = diameterOfTree(root.right);
+        int leftDiameter = diameterOfBinaryTree(root.left);
+        int rightDiameter = diameterOfBinaryTree(root.right);
         // Return the maximum diameter found in the binary tree
         return Math.max(currentDiameter, Math.max(leftDiameter, rightDiameter));
     }
